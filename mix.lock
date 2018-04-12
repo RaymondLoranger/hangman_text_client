@@ -3,5 +3,6 @@
   "earmark": {:hex, :earmark, "1.2.5", "4d21980d5d2862a2e13ec3c49ad9ad783ffc7ca5769cf6ff891a4553fbaae761", [:mix], [], "hexpm"},
   "ex_doc": {:hex, :ex_doc, "0.18.3", "f4b0e4a2ec6f333dccf761838a4b253d75e11f714b85ae271c9ae361367897b7", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, repo: "hexpm", optional: false]}], "hexpm"},
   "logger_file_backend": {:hex, :logger_file_backend, "0.0.10", "876f9f84ae110781207c54321ffbb62bebe02946fe3c13f0d7c5f5d8ad4fa910", [:mix], [], "hexpm"},
-  "persist_config": {:hex, :persist_config, "0.1.3", "6ec6a0d3ee61956bfc5cbc37cfa56ad2fab697b29fbfa491eca22cae00f7c866", [:mix], [], "hexpm"},
+  "mix_tasks": {:git, "https://github.com/RaymondLoranger/mix_tasks.git", "cdb17c124405752bb40f09c4aa21613ada33357a", []},
+  "persist_config": {:hex, :persist_config, "0.2.4", "1b131910ba8772cf95a5a8673f12a2e7c4ba67ab418d27eb90486a998703624b", [:mix], [], "hexpm"},
 }
