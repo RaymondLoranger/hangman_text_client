@@ -2,6 +2,8 @@
 
 **TODO: Add description**
 
+##### Inspired by the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/ elixir-for-programmers) by Dave Thomas.
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed

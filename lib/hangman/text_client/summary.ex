@@ -1,12 +1,12 @@
-defmodule TextClient.Summary do
+defmodule Hangman.TextClient.Summary do
   # @moduledoc """
   # Displays a summary of the Hangman game.
   # """
   @moduledoc false
 
-  alias TextClient.State
+  alias Hangman.TextClient.State
 
-  @spec display(State.t) :: State.t
+  @spec display(State.t()) :: State.t()
   def display(%State{tally: tally} = state) do
     # IO.puts([
     #   "\n",
@@ -20,13 +20,12 @@ defmodule TextClient.Summary do
       "\n",
       "Guesses left: #{tally.turns_left}\n"
     ])
+
     state
   end
 
   ## Private functions
 
-  @spec io_list([String.codepoint]) :: IO.chardata
-  defp io_list(letters) do
-    letters |> Enum.reduce([], &[&2 | [&1, " "]])
-  end
+  @spec io_list([String.codepoint()]) :: IO.chardata()
+  defp io_list(letters), do: letters |> Enum.reduce([], &[&2 | [&1, " "]])
 end

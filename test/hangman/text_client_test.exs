@@ -1,6 +1,6 @@
-defmodule TextClientTest do
+defmodule Hangman.TextClientTest do
   use ExUnit.Case
-  doctest TextClient
+  doctest Hangman.TextClient
 
   test "the truth" do
     assert 1 + 1 == 2
