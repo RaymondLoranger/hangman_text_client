@@ -21,12 +21,12 @@ defmodule Hangman.TextClient.Prompter do
     do: Player.end_game(state, "Game ended: #{reason}")
 
   defp check_input(:eof, state),
-    do: Player.end_game(state, "Looks like you gave up.")
+    do: Player.end_game(state, "Looks like you gave up (eof).")
 
   defp check_input(input, state) do
     case String.trim(input) do
       "stop" -> Player.end_game(state, "Looks like you gave up.")
-      <<char>> = guess when char in ?a..?z -> struct(state, guess: guess)
+      <<char>> = guess when char in ?a..?z -> put_in(state.guess, guess)
       _bad -> accept_move(state, "Please enter a single lowercase letter.")
     end
   end

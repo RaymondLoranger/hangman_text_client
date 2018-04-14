@@ -13,7 +13,7 @@ defmodule Hangman.TextClient.Interact do
 
   @spec start(String.t()) :: no_return
   def start(player_name) when is_binary(player_name),
-    do: game_name() |> new_game() |> State.init(player_name) |> Player.play()
+    do: game_name() |> new_game() |> State.new(player_name) |> Player.play()
 
   ## Private functions
 
@@ -24,6 +24,7 @@ defmodule Hangman.TextClient.Interact do
     length
     |> :crypto.strong_rand_bytes()
     |> Base.url_encode64()
+    # Starting at 0 with length "length"...
     |> binary_part(0, length)
   end
 

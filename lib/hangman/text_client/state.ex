@@ -23,8 +23,8 @@ defmodule Hangman.TextClient.State do
           guess: String.codepoint()
         }
 
-  @spec init(String.t(), String.t()) :: t
-  def init(game_name, player_name) do
+  @spec new(String.t(), String.t()) :: t
+  def new(game_name, player_name) do
     %State{
       game_name: game_name,
       player_name: player_name,

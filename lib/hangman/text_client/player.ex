@@ -7,16 +7,16 @@ defmodule Hangman.TextClient.Player do
   # won, lost, good guess, bad guess, already used, initializing
   @spec play(State.t()) :: no_return
   def play(%State{tally: %{game_state: :won}} = state),
-    do: end_game(state, "You WON!")
+    do: end_game(state, "#{state.player_name}, you WON!")
 
   def play(%State{tally: %{game_state: :lost}} = state),
-    do: end_game(state, "Sorry, you lost.")
+    do: end_game(state, "#{state.player_name}, you lost.")
 
   def play(%State{tally: %{game_state: :good_guess}} = state),
     do: continue(state, "Good guess!")
 
   def play(%State{tally: %{game_state: :bad_guess}} = state),
-    do: continue(state, "Sorry, '#{state.guess}' not in the word...")
+    do: continue(state, "Sorry, '#{state.guess}' NOT in the word...")
 
   def play(%State{tally: %{game_state: :already_used}} = state),
     do: continue(state, "Letter '#{state.guess}' already used...")
