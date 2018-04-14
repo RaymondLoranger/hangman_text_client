@@ -2,6 +2,8 @@
   "dialyxir": {:hex, :dialyxir, "0.5.1", "b331b091720fd93e878137add264bac4f644e1ddae07a70bf7062c7862c4b952", [:mix], [], "hexpm"},
   "earmark": {:hex, :earmark, "1.2.5", "4d21980d5d2862a2e13ec3c49ad9ad783ffc7ca5769cf6ff891a4553fbaae761", [:mix], [], "hexpm"},
   "ex_doc": {:hex, :ex_doc, "0.18.3", "f4b0e4a2ec6f333dccf761838a4b253d75e11f714b85ae271c9ae361367897b7", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, repo: "hexpm", optional: false]}], "hexpm"},
+  "hangman_dictionary": {:git, "https://github.com/RaymondLoranger/hangman_dictionary.git", "fd425e526d8a70096a7073da053131317e29265f", []},
+  "hangman_engine": {:git, "https://github.com/RaymondLoranger/hangman_engine.git", "054dbb3093658ddc8ae85f75ac8224389155474e", []},
   "logger_file_backend": {:hex, :logger_file_backend, "0.0.10", "876f9f84ae110781207c54321ffbb62bebe02946fe3c13f0d7c5f5d8ad4fa910", [:mix], [], "hexpm"},
   "mix_tasks": {:git, "https://github.com/RaymondLoranger/mix_tasks.git", "cdb17c124405752bb40f09c4aa21613ada33357a", []},
   "persist_config": {:hex, :persist_config, "0.2.4", "1b131910ba8772cf95a5a8673f12a2e7c4ba67ab418d27eb90486a998703624b", [:mix], [], "hexpm"},

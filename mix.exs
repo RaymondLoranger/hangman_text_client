@@ -25,7 +25,7 @@ defmodule Hangman.TextClient.Mixfile do
     [
       {:mix_tasks,
        github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
-      {:hangman_engine, path: "../hangman_engine"},
+      {:hangman_engine, github: "RaymondLoranger/hangman_engine"},
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
       {:dialyxir, "~> 0.5", only: :dev, runtime: false}
