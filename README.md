@@ -12,7 +12,7 @@ by adding `text_client` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:text_client, "~> 0.1"}
+    {:hangman_text_client, "~> 0.1"}
   ]
 end
 ```
