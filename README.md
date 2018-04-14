@@ -2,7 +2,7 @@
 
 Text client for the Hangman game.
 
-##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/ elixir-for-programmers) by Dave Thomas.
+##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
 
 ## Installation
 
@@ -12,7 +12,7 @@ by adding `text_client` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:text_client, "~> 0.1.0"}
+    {:text_client, "~> 0.1"}
   ]
 end
 ```
