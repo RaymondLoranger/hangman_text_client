@@ -16,7 +16,7 @@ defmodule Hangman.TextClient.Player do
     do: continue(state, "Good guess!")
 
   def play(%State{tally: %{game_state: :bad_guess}} = state),
-    do: continue(state, "Sorry, '#{state.guess}' NOT in the word...")
+    do: continue(state, "Letter '#{state.guess}' not in the word...")
 
   def play(%State{tally: %{game_state: :already_used}} = state),
     do: continue(state, "Letter '#{state.guess}' already used...")
