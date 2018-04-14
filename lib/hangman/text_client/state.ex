@@ -8,19 +8,27 @@ defmodule Hangman.TextClient.State do
   alias Hangman.Engine
   alias Hangman.Engine.Game
 
-  @enforce_keys [:player, :tally]
+  @enforce_keys [:game_name, :player_name, :tally]
   defstruct(
-    player: "",
+    game_name: "",
+    player_name: "",
     tally: %{},
     guess: ""
   )
 
   @type t :: %State{
-          player: String.t(),
+          game_name: String.t(),
+          player_name: String.t(),
           tally: Game.tally(),
           guess: String.codepoint()
         }
 
-  @spec init(String.t()) :: t
-  def init(player), do: %State{player: player, tally: Engine.tally(player)}
+  @spec init(String.t(), String.t()) :: t
+  def init(game_name, player_name) do
+    %State{
+      game_name: game_name,
+      player_name: player_name,
+      tally: Engine.tally(game_name)
+    }
+  end
 end

@@ -8,7 +8,6 @@ defmodule Hangman.TextClient.Mover do
   alias Hangman.TextClient.State
 
   @spec make_move(State.t()) :: State.t()
-  def make_move(%State{player: player, guess: guess} = state) do
-    struct(state, tally: Engine.make_move(player, guess))
-  end
+  def make_move(%State{game_name: game_name, guess: guess} = state),
+    do: put_in(state.tally, Engine.make_move(game_name, guess))
 end
