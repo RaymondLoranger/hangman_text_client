@@ -1,8 +1,8 @@
-# TextClient
+# Hangman Text Client
 
-**TODO: Add description**
+Text client for the Hangman game.
 
-##### Inspired by the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/ elixir-for-programmers) by Dave Thomas.
+##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/ elixir-for-programmers) by Dave Thomas.
 
 ## Installation
 
