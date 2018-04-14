@@ -18,7 +18,7 @@ defmodule Hangman.TextClient.Summary do
       "Word so far:  ",
       io_list(tally.letters),
       "\n",
-      "Guesses left: #{tally.turns_left}\n"
+      "Guesses left: #{tally.turns_left}"
     ])
 
     state

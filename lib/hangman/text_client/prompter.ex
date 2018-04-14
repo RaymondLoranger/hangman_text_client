@@ -11,7 +11,10 @@ defmodule Hangman.TextClient.Prompter do
   @spec accept_move(State.t(), String.t()) :: State.t() | no_return
   def accept_move(%State{player_name: player_name} = state, msg \\ "") do
     unless msg == "", do: IO.puts(msg)
-    "#{player_name}, your guess (or stop): " |> IO.gets() |> check_input(state)
+
+    "\n#{player_name}, your guess (or stop): "
+    |> IO.gets()
+    |> check_input(state)
   end
 
   ## Private functions
@@ -25,9 +28,14 @@ defmodule Hangman.TextClient.Prompter do
 
   defp check_input(input, state) do
     case String.trim(input) do
-      "stop" -> Player.end_game(state, "Looks like you gave up.")
-      <<char>> = guess when char in ?a..?z -> put_in(state.guess, guess)
-      _bad -> accept_move(state, "Please enter a single lowercase letter.")
+      "stop" ->
+        Player.end_game(state, "Looks like you gave up.")
+
+      <<char>> = guess when char in ?a..?z ->
+        put_in(state.guess, guess)
+
+      _bad ->
+        accept_move(state, "Please enter a single lowercase letter.")
     end
   end
 end
