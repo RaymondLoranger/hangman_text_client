@@ -5,6 +5,6 @@
   "hangman_dictionary": {:git, "https://github.com/RaymondLoranger/hangman_dictionary.git", "409e65ed33c774df9d57441e880b7e4b84fb32b4", []},
   "hangman_engine": {:git, "https://github.com/RaymondLoranger/hangman_engine.git", "2afc89b23f781d921e46b09844075e580fd3b7f0", []},
   "logger_file_backend": {:hex, :logger_file_backend, "0.0.10", "876f9f84ae110781207c54321ffbb62bebe02946fe3c13f0d7c5f5d8ad4fa910", [:mix], [], "hexpm"},
-  "mix_tasks": {:git, "https://github.com/RaymondLoranger/mix_tasks.git", "cdb17c124405752bb40f09c4aa21613ada33357a", []},
-  "persist_config": {:hex, :persist_config, "0.2.5", "ad7c06dcf91263fc39d230ca99a0df0f3e7d33116ed9aaddcc42e2918a31cc3b", [:mix], [], "hexpm"},
+  "mix_tasks": {:git, "https://github.com/RaymondLoranger/mix_tasks.git", "1a223a160a4545228ce3ae2fed64a6acd0827173", []},
+  "persist_config": {:hex, :persist_config, "0.2.6", "2e177b1e82e0f26b90936af21ab5ddbffdbb1372adc33d49f20159e52d583b10", [:mix], [], "hexpm"},
 }
