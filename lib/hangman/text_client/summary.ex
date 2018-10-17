@@ -13,6 +13,10 @@ defmodule Hangman.TextClient.Summary do
     #   "Word so far:  #{Enum.join(tally.letters, " ")}\n",
     #   "Guesses left: #{tally.turns_left}\n"
     # ])
+    # IO.puts("""
+    #   Word so far:  #{Enum.join(tally.letters, " ")}
+    #   Guesses left: #{tally.turns_left}
+    # """)
     IO.puts([
       "\n",
       "Word so far:  ",

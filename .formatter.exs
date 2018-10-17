@@ -1,10 +1,10 @@
-# except = ["config/persist.exs", "test/**/text*.exs"]
+# Used by "mix format"
+wildcard = fn glob -> Path.wildcard(glob, match_dot: true) end
+matches = fn globs -> Enum.flat_map(globs, &wildcard.(&1)) end
 except = []
 inputs = ["*.exs", "{config,lib,test}/**/*.{ex,exs}"]
-wild = fn glob -> Path.wildcard(glob, match_dot: true) end
-inputs = Enum.flat_map(inputs, &wild.(&1)) -- Enum.flat_map(except, &wild.(&1))
 
 [
-  inputs: inputs,
+  inputs: matches.(inputs) -- matches.(except),
   line_length: 80
 ]
