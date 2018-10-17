@@ -12,7 +12,7 @@ defmodule Hangman.TextClient.Prompter do
   def accept_move(%State{player_name: player_name} = state, msg \\ "") do
     unless msg == "", do: IO.puts(msg)
 
-    "\n#{player_name}, your guess (or stop): "
+    "#{player_name}, your guess (or stop): "
     |> IO.gets()
     |> check_input(state)
   end
