@@ -23,7 +23,7 @@ defmodule Hangman.TextClient.Player do
 
   def play(%State{} = state), do: continue(state)
 
-  @spec end_game(State.t(), String.t()) :: true
+  @spec end_game(State.t(), String.t()) :: no_return
   def end_game(%State{game_name: game_name} = state, msg) do
     Summary.display(state)
     IO.puts(msg)
