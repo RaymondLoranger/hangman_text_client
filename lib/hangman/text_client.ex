@@ -7,7 +7,7 @@ defmodule Hangman.TextClient do
   @course_ref Application.get_env(@app, :course_ref)
 
   @moduledoc """
-  Text client for the Hangman game.
+  Text client for the _Hangman Game_.
 
   ##### #{@course_ref}
   """
@@ -15,7 +15,7 @@ defmodule Hangman.TextClient do
   alias __MODULE__.Interact
 
   @doc """
-  Starts a Hangman game.
+  Starts a _Hangman Game_.
 
   App `:hangman_engine` must run in node `:hangman@<hostname>`...
   - `cd hangman_engine`
@@ -27,5 +27,6 @@ defmodule Hangman.TextClient do
   - `iex --sname c[lient]<n> -S mix`
   - `Hangman.TextClient.start("Mike")`
   """
+  @spec start(String.t()) :: no_return
   defdelegate start(player_name \\ "Dear player"), to: Interact
 end
