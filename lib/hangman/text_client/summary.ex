@@ -1,8 +1,7 @@
 defmodule Hangman.TextClient.Summary do
-  # @moduledoc """
-  # Displays a summary of the Hangman game.
-  # """
-  @moduledoc false
+  @moduledoc """
+  Displays a summary of the _Hangman Game_.
+  """
 
   alias Hangman.TextClient.State
 

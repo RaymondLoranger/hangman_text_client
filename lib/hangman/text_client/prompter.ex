@@ -1,8 +1,7 @@
 defmodule Hangman.TextClient.Prompter do
-  # @moduledoc """
-  # Prompts a Hangman game player.
-  # """
-  @moduledoc false
+  @moduledoc """
+  Prompts a _Hangman Game_ player.
+  """
 
   alias Hangman.TextClient.{Player, State}
 

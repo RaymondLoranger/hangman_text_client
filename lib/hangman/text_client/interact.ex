@@ -1,8 +1,7 @@
 defmodule Hangman.TextClient.Interact do
-  # @moduledoc """
-  # Interacts with a client playing a Hangman game.
-  # """
-  @moduledoc false
+  @moduledoc """
+  Interacts with a client playing a _Hangman Game_.
+  """
 
   use PersistConfig
 

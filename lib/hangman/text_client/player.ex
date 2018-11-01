@@ -1,6 +1,4 @@
 defmodule Hangman.TextClient.Player do
-  @moduledoc false
-
   alias Hangman.Engine
   alias Hangman.TextClient.{Mover, Prompter, State, Summary}
 

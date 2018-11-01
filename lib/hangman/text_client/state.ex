@@ -1,8 +1,7 @@
 defmodule Hangman.TextClient.State do
-  # @moduledoc """
-  # Holds the state of a text client playing the Hangman game.
-  # """
-  @moduledoc false
+  @moduledoc """
+  Holds the state of a text client playing the _Hangman Game_.
+  """
 
   alias __MODULE__
   alias Hangman.Engine

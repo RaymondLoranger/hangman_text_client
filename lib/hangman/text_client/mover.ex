@@ -1,8 +1,7 @@
 defmodule Hangman.TextClient.Mover do
-  # @moduledoc """
-  # Makes a Hangman game move.
-  # """
-  @moduledoc false
+  @moduledoc """
+  Makes a _Hangman Game_ move.
+  """
 
   alias Hangman.Engine
   alias Hangman.TextClient.State
