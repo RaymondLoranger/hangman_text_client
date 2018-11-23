@@ -33,8 +33,15 @@ defmodule Hangman.Text.Client.Interact do
     :ok = :global.sync()
 
     case :rpc.call(@node, Engine, :new_game, [game_name]) do
-      {:ok, _pid} -> game_name
-      error -> exit(error)
+      {:ok, _pid} ->
+        game_name
+
+      {:badrpc, :nodedown} ->
+        IO.puts("Hangman Engine not started.")
+        self() |> Process.exit(:normal)
+
+      error ->
+        exit(error)
     end
   end
 end
