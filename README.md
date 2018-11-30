@@ -7,7 +7,7 @@ Text client for the _Hangman Game_.
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `text_client` to your list of dependencies in `mix.exs`:
+by adding `hangman_text_client` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
