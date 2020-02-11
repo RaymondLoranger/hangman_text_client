@@ -6,5 +6,4 @@ use Mix.Config
 config :elixir, ansi_enabled: true
 
 #     import_config "#{Mix.env}.exs"
-import_config "persist.exs"
-import_config "persist_course_ref.exs"
+import_config "persist_*.exs"

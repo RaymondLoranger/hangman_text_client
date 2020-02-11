@@ -20,10 +20,10 @@ defmodule Hangman.Text.Client.Prompter do
 
   @spec check_input(input, State.t()) :: State.t() | no_return
   defp check_input({:error, reason}, state),
-    do: Player.end_game(state, "Game ended: #{reason}")
+    do: Player.end_game(state, "Game ended: #{reason}.")
 
   defp check_input(:eof, state),
-    do: Player.end_game(state, "Looks like you gave up (eof).")
+    do: Player.end_game(state, "Looks like you gave up.")
 
   defp check_input(input, state) do
     case String.trim(input) do
@@ -33,7 +33,7 @@ defmodule Hangman.Text.Client.Prompter do
       <<char>> = guess when char in ?a..?z ->
         put_in(state.guess, guess)
 
-      _bad ->
+      _bad_input ->
         accept_move(state, "Please enter a single lowercase letter.")
     end
   end

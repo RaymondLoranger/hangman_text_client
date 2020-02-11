@@ -17,16 +17,17 @@ defmodule Hangman.Text.Client do
   @doc """
   Starts a _Hangman Game_.
 
-  App `:hangman_engine` must run in node `:hangman@<hostname>`...
+  App `:hangman_engine` must run in node `:hangman_engine@<hostname>`:
   - `cd hangman_engine`
-  - `iex --sname hangman -S mix`
+  - `iex --sname hangman_engine -S mix`
   - `:observer.start() # optional`
 
-  Each client must run in a different node...
+  Each client must run in a different node.
+  For example, the n-th client may specify:
   - `cd hangman_text_client`
-  - `iex --sname c[lient]<n> -S mix`
+  - `iex --sname client_<n> -S mix`
   - `Hangman.Text.Client.start("Mike")`
   """
   @spec start(String.t()) :: no_return
-  defdelegate start(player_name \\ "Dear player"), to: Interact
+  defdelegate start(player_name), to: Interact
 end

@@ -8,7 +8,7 @@ defmodule Hangman.Text.Client.Interact do
   alias Hangman.Engine
   alias Hangman.Text.Client.{Player, State}
 
-  @node Application.get_env(@app, :hangman_node)
+  @node Application.get_env(@app, :hangman_engine_node)
 
   @spec start(String.t()) :: no_return
   def start(player_name) when is_binary(player_name),
