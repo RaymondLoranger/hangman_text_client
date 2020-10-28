@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :hangman_text_client,
   course_ref:

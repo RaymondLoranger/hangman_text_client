@@ -4,7 +4,7 @@
 defmodule Hangman.Text.Client do
   use PersistConfig
 
-  @course_ref Application.get_env(@app, :course_ref)
+  @course_ref get_env(:course_ref)
 
   @moduledoc """
   Text client for the _Hangman Game_.

@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # Here {:ok, 'rays'}...
 {:ok, hostname} = :inet.gethostname()
