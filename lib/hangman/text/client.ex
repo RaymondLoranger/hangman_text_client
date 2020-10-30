@@ -17,16 +17,63 @@ defmodule Hangman.Text.Client do
   @doc """
   Starts a _Hangman Game_.
 
-  App `:hangman_engine` must run in node `:hangman_engine@<hostname>`:
-  - `cd hangman_engine`
-  - `iex --sname hangman_engine -S mix`
-  - `:observer.start() # optional`
+  App `:hangman_engine` must run in node `:hangman_engine@<hostname>`.
 
-  Each client must run in a different node.
-  For example, the n-th client may specify:
-  - `cd hangman_text_client`
-  - `iex --sname client_<n> -S mix`
-  - `Hangman.Text.Client.start("Mike")`
+  ### Short names
+
+    Start the engine:
+
+    - `cd hangman_engine`
+    - `iex --sname hangman_engine -S mix`
+    - `:observer.start() # optional`
+
+    Start each client in a different node:
+
+    - `cd hangman_text_client`
+    - `set "MIX_ENV=dev" && iex --sname mike -S mix`
+    - `Hangman.Text.Client.start("Mike")`
+
+  ### Long names
+
+    Start the engine:
+
+    - `cd hangman_engine`
+    - `iex --name hangman_engine@rays.supratech.ca -S mix`
+    - `:observer.start() # optional`
+
+    Start each client in a different node:
+
+    - `cd hangman_text_client`
+    - `set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix`
+    - `Hangman.Text.Client.start("Mike")`
+
+  ### Short names using releases
+
+    Start the engine:
+
+    - `cd hangman_engine`
+    - `iex --sname hangman_engine --cookie fortune -S mix`
+    - `:observer.start() # optional`
+
+    Start each client in a different node:
+
+    - `cd hangman_text_client`
+    - `"_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex`
+    - `Hangman.Text.Client.start("Mike")`
+
+  ### Long names using releases
+
+    Start the engine:
+
+    - `cd hangman_engine`
+    - `iex --name hangman_engine@rays.supratech.ca --cookie fortune -S mix`
+    - `:observer.start() # optional`
+
+    Start each client in a different node:
+
+    - `cd hangman_text_client`
+    - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
+    - `Hangman.Text.Client.start("Mike")`
   """
   @spec start(String.t()) :: no_return
   defdelegate start(player_name), to: Interact

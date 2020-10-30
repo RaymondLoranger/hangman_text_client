@@ -16,7 +16,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def application do
     [
       included_applications: [:hangman_engine],
-      extra_applications: [:logger, :crypto]
+      extra_applications: [:crypto, :logger]
     ]
   end
 
