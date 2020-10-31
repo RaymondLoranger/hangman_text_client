@@ -22,8 +22,9 @@ defmodule Hangman.Text.Client.Player do
   def play(%State{} = state), do: continue(state)
 
   @spec end_game(State.t(), String.t()) :: no_return
-  def end_game(%State{game_name: game_name, tally: tally}, msg) do
+  def end_game(%State{game_name: game_name}, msg) do
     IO.puts(msg)
+    tally = Engine.guess_word(game_name)
     IO.puts("\nThe word was: #{Enum.join(tally.letters, " ")}")
     Engine.end_game(game_name)
     self() |> Process.exit(:normal)
