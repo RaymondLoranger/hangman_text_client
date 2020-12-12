@@ -71,27 +71,6 @@ defmodule Hangman.Text.Client do
     - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
     - `Hangman.Text.Client.start("Mike")`
   """
-
-  # To create the dev and prod releases:
-
-  # mix release.init
-
-  # edit rel/env.bat.eex to look like this:
-
-  # @echo off
-  # set RELEASE_COOKIE=fortune
-
-  # set "MIX_ENV=dev" && mix release
-
-  # edit rel/env.bat.eex to look like this:
-
-  # @echo off
-  # set RELEASE_DISTRIBUTION=name
-  # set RELEASE_NODE=<%= @release.name %>@rays.supratech.ca
-  # set RELEASE_COOKIE=fortune
-
-  # set "MIX_ENV=prod" && mix release
-
   @spec start(String.t()) :: no_return
   defdelegate start(player_name), to: Interact
 end
