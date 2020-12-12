@@ -76,17 +76,18 @@ defmodule Hangman.Text.Client do
 
   # mix release.init
 
+  # edit rel/env.bat.eex to look like this:
+
+  # @echo off
+  # set RELEASE_COOKIE=fortune
+
   # set "MIX_ENV=dev" && mix release
 
   # edit rel/env.bat.eex to look like this:
 
   # @echo off
-  # rem Set the release to work across nodes. If using the long name format like
-  # rem the one below (my_app@127.0.0.1), you need to also uncomment the
-  # rem RELEASE_DISTRIBUTION variable below. Must be "sname", "name" or "none".
   # set RELEASE_DISTRIBUTION=name
   # set RELEASE_NODE=<%= @release.name %>@rays.supratech.ca
-  # rem set RELEASE_NODE=<%= @release.name %>@127.0.0.1
   # set RELEASE_COOKIE=fortune
 
   # set "MIX_ENV=prod" && mix release
