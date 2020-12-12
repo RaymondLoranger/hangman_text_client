@@ -71,6 +71,26 @@ defmodule Hangman.Text.Client do
     - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
     - `Hangman.Text.Client.start("Mike")`
   """
+
+  # To create the dev and prod releases:
+
+  # mix release.init
+
+  # set "MIX_ENV=dev" && mix release
+
+  # edit rel/env.bat.eex to look like this:
+
+  # @echo off
+  # rem Set the release to work across nodes. If using the long name format like
+  # rem the one below (my_app@127.0.0.1), you need to also uncomment the
+  # rem RELEASE_DISTRIBUTION variable below. Must be "sname", "name" or "none".
+  # set RELEASE_DISTRIBUTION=name
+  # set RELEASE_NODE=<%= @release.name %>@rays.supratech.ca
+  # rem set RELEASE_NODE=<%= @release.name %>@127.0.0.1
+  # set RELEASE_COOKIE=fortune
+
+  # set "MIX_ENV=prod" && mix release
+
   @spec start(String.t()) :: no_return
   defdelegate start(player_name), to: Interact
 end
