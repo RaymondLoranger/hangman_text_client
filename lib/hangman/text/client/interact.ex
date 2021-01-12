@@ -6,9 +6,10 @@ defmodule Hangman.Text.Client.Interact do
   use PersistConfig
 
   alias Hangman.Engine
+  alias Hangman.Engine.Game
   alias Hangman.Text.Client.{Player, State}
 
-  @spec start(String.t()) :: no_return
+  @spec start(State.player_name()) :: no_return
   def start(player_name) when is_binary(player_name) do
     new_game(engine_node(), game_name())
     |> State.new(player_name)
@@ -17,7 +18,7 @@ defmodule Hangman.Text.Client.Interact do
 
   ## Private functions
 
-  @spec game_name :: String.t()
+  @spec game_name :: Game.name()
   defp game_name do
     length = Enum.random(4..10)
 
@@ -31,7 +32,7 @@ defmodule Hangman.Text.Client.Interact do
   @spec engine_node :: node
   defp engine_node, do: get_env(:engine_node)
 
-  @spec new_game(node, String.t()) :: String.t() | no_return
+  @spec new_game(node, Game.name()) :: Game.name() | no_return
   defp new_game(engine_node, game_name) do
     if Node.connect(engine_node) do
       IO.puts("Connected to node #{inspect(engine_node)}.")

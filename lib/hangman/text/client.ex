@@ -8,7 +8,7 @@ defmodule Hangman.Text.Client do
   ##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
 
-  alias __MODULE__.Interact
+  alias __MODULE__.{Interact, State}
 
   @doc """
   Starts a _Hangman Game_.
@@ -71,6 +71,6 @@ defmodule Hangman.Text.Client do
     - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
     - `Hangman.Text.Client.start("Mike")`
   """
-  @spec start(String.t()) :: no_return
+  @spec start(State.player_name()) :: no_return
   defdelegate start(player_name), to: Interact
 end

@@ -15,14 +15,15 @@ defmodule Hangman.Text.Client.State do
     guess: ""
   )
 
+  @type player_name :: String.t()
   @type t :: %State{
-          game_name: String.t(),
-          player_name: String.t(),
+          game_name: Game.name(),
+          player_name: player_name,
           tally: Game.tally(),
           guess: String.codepoint()
         }
 
-  @spec new(String.t(), String.t()) :: t
+  @spec new(Game.name(), player_name) :: t
   def new(game_name, player_name) do
     %State{
       game_name: game_name,
