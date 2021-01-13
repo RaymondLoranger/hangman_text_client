@@ -2,7 +2,7 @@ import Config
 
 engine_node =
   if config_env() == :prod do
-    # long name -- 'hosts' file must map host name to IP address
+    # long name -- 'hosts' file must map hostname to IP address
     # On Windows => C:\Windows\System32\Drivers\etc\hosts:
     # <n>.<n>.<n>.<n> rays.supratech.ca # FQDN of Erlang/Elixir long node name
     'hangman_engine@rays.supratech.ca'
