@@ -35,7 +35,7 @@ defmodule Hangman.Text.Client.Interact do
   @spec new_game(node, Game.name()) :: Game.name() | no_return
   defp new_game(engine_node, game_name) do
     if Node.connect(engine_node) do
-      IO.puts("Connected to node #{inspect(engine_node)}.")
+      IO.puts("Connected to node #{inspect(engine_node)}...")
     else
       IO.puts("Cannot connect to node #{inspect(engine_node)}.")
       self() |> Process.exit(:normal)
