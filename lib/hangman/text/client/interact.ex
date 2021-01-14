@@ -22,8 +22,7 @@ defmodule Hangman.Text.Client.Interact do
   defp game_name do
     length = Enum.random(4..10)
 
-    length
-    |> :crypto.strong_rand_bytes()
+    :crypto.strong_rand_bytes(length)
     |> Base.url_encode64()
     # Starting at 0 with length "length"...
     |> binary_part(0, length)

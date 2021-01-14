@@ -19,7 +19,7 @@ defmodule Hangman.Text.Client.Player do
   def play(%State{tally: %{game_state: :already_used}} = state),
     do: continue(state, "Letter '#{state.guess}' already used...")
 
-  def play(%State{} = state), do: continue(state)
+  def play(%State{} = state), do: continue(state) # initializing
 
   @spec end_game(State.t(), String.t()) :: no_return
   def end_game(%State{game_name: game_name}, msg) do
