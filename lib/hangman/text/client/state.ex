@@ -7,13 +7,8 @@ defmodule Hangman.Text.Client.State do
   alias Hangman.Engine
   alias Hangman.Engine.Game
 
-  @enforce_keys [:game_name, :player_name, :tally]
-  defstruct(
-    game_name: "",
-    player_name: "",
-    tally: %{},
-    guess: ""
-  )
+  @enforce_keys [:game_name, :player_name, :tally, :guess]
+  defstruct [:game_name, :player_name, :tally, :guess]
 
   @type player_name :: String.t()
   @type t :: %State{
@@ -28,7 +23,8 @@ defmodule Hangman.Text.Client.State do
     %State{
       game_name: game_name,
       player_name: player_name,
-      tally: Engine.tally(game_name)
+      tally: Engine.tally(game_name),
+      guess: ""
     }
   end
 end

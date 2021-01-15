@@ -8,9 +8,13 @@ defmodule Hangman.Text.Client.Prompter do
   @type input :: String.t() | {:error, atom} | :eof
 
   @spec accept_move(State.t(), String.t()) :: State.t() | no_return
-  def accept_move(%State{player_name: player_name} = state, msg \\ "") do
-    unless msg == "", do: IO.puts(msg)
+  def accept_move(state, msg) do
+    IO.puts(msg)
+    accept_move(state)
+  end
 
+  @spec accept_move(State.t()) :: State.t() | no_return
+  def accept_move(%State{player_name: player_name} = state) do
     "#{player_name}, your guess (or stop): "
     |> IO.gets()
     |> check_input(state)

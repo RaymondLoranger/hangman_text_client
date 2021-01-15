@@ -11,22 +11,12 @@ defmodule Hangman.Text.Client.Interact do
 
   @spec start(State.player_name()) :: no_return
   def start(player_name) when is_binary(player_name) do
-    new_game(engine_node(), game_name())
+    new_game(engine_node(), Engine.game_name())
     |> State.new(player_name)
     |> Player.play()
   end
 
   ## Private functions
-
-  @spec game_name :: Game.name()
-  defp game_name do
-    length = Enum.random(4..10)
-
-    :crypto.strong_rand_bytes(length)
-    |> Base.url_encode64()
-    # Starting at 0 with length "length"...
-    |> binary_part(0, length)
-  end
 
   @spec engine_node :: node
   defp engine_node, do: get_env(:engine_node)

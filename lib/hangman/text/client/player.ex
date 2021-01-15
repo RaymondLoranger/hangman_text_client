@@ -19,7 +19,8 @@ defmodule Hangman.Text.Client.Player do
   def play(%State{tally: %{game_state: :already_used}} = state),
     do: continue(state, "Letter '#{state.guess}' already used...")
 
-  def play(%State{} = state), do: continue(state) # initializing
+  # initializing
+  def play(%State{} = state), do: continue(state)
 
   @spec end_game(State.t(), String.t()) :: no_return
   def end_game(%State{game_name: game_name}, msg) do
@@ -33,9 +34,13 @@ defmodule Hangman.Text.Client.Player do
   ## Private functions
 
   @spec continue(State.t(), String.t()) :: no_return
-  defp continue(state, msg \\ "") do
-    unless msg == "", do: IO.puts(msg)
+  defp continue(state, msg) do
+    IO.puts(msg)
+    continue(state)
+  end
 
+  @spec continue(State.t()) :: no_return
+  defp continue(state) do
     state
     |> Summary.display()
     |> Prompter.accept_move()

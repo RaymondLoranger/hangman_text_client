@@ -1,7 +1,8 @@
 # Used by "mix format"
 wildcard = fn glob -> Path.wildcard(glob, match_dot: true) end
 matches = fn globs -> Enum.flat_map(globs, &wildcard.(&1)) end
-except = ["lib/**/player.ex"]
+# except = ["lib/**/player.ex"]
+except = []
 inputs = ["*.exs", "{config,lib,test}/**/*.{ex,exs}"]
 
 [
