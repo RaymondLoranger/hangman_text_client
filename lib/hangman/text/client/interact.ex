@@ -11,7 +11,7 @@ defmodule Hangman.Text.Client.Interact do
 
   @spec start(State.player_name()) :: no_return
   def start(player_name) when is_binary(player_name) do
-    new_game(engine_node(), Engine.game_name())
+    new_game(engine_node(), Engine.random_game_name())
     |> State.new(player_name)
     |> Player.play()
   end
