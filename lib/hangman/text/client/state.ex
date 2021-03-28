@@ -4,8 +4,7 @@ defmodule Hangman.Text.Client.State do
   """
 
   alias __MODULE__
-  alias Hangman.Engine
-  alias Hangman.Engine.Game
+  alias Hangman.{Engine, Game}
 
   @enforce_keys [:game_name, :player_name, :tally, :guess]
   defstruct [:game_name, :player_name, :tally, :guess]

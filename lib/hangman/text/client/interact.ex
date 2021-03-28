@@ -5,13 +5,12 @@ defmodule Hangman.Text.Client.Interact do
 
   use PersistConfig
 
-  alias Hangman.Engine
-  alias Hangman.Engine.Game
+  alias Hangman.{Engine, Game}
   alias Hangman.Text.Client.{Player, State}
 
   @spec start(State.player_name()) :: no_return
   def start(player_name) when is_binary(player_name) do
-    new_game(engine_node(), Engine.random_game_name())
+    new_game(engine_node(), Game.random_name())
     |> State.new(player_name)
     |> Player.play()
   end
