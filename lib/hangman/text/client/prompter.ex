@@ -36,7 +36,7 @@ defmodule Hangman.Text.Client.Prompter do
         put_in(state.guess, guess)
 
       _bad_input ->
-        IO.puts("Please enter a single lowercase letter.")
+        IO.puts("Please enter a single lowercase letter.\n")
         accept_move(state)
     end
   end
