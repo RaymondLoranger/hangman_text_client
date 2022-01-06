@@ -6,15 +6,6 @@ defmodule Hangman.Text.Client.Prompter do
   alias Hangman.Text.Client.{Player, State}
 
   @doc """
-  Displays a `message` and accepts a player's move.
-  """
-  @spec accept_move(State.t(), String.t()) :: State.t() | no_return
-  def accept_move(state, message) do
-    IO.puts(message)
-    accept_move(state)
-  end
-
-  @doc """
   Accepts a player's move.
   """
   @spec accept_move(State.t()) :: State.t() | no_return
@@ -45,7 +36,8 @@ defmodule Hangman.Text.Client.Prompter do
         put_in(state.guess, guess)
 
       _bad_input ->
-        accept_move(state, "Please enter a single lowercase letter.")
+        IO.puts("Please enter a single lowercase letter.")
+        accept_move(state)
     end
   end
 end
