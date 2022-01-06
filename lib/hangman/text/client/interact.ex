@@ -8,10 +8,14 @@ defmodule Hangman.Text.Client.Interact do
   alias Hangman.{Engine, Game}
   alias Hangman.Text.Client.{Player, State}
 
-  @spec start(State.player_name()) :: no_return
-  def start(player_name) when is_binary(player_name) do
-    new_game(engine_node(), Game.random_name())
-    |> State.new(player_name)
+  @doc """
+  Starts a game.
+  """
+  @spec start :: no_return
+  def start do
+    engine_node()
+    |> new_game("#{node()}")
+    |> State.new()
     |> Player.play()
   end
 
@@ -29,8 +33,10 @@ defmodule Hangman.Text.Client.Interact do
       self() |> Process.exit(:normal)
     end
 
+    # Synchronizes the global name server with all nodes known to this node.
     :ok = :global.sync()
 
+    # Remote procedure call to call a function on a remote node.
     case :rpc.call(engine_node, Engine, :new_game, [game_name]) do
       {:ok, _pid} ->
         game_name

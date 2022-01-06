@@ -1,21 +1,28 @@
 defmodule Hangman.Text.Client.Prompter do
   @moduledoc """
-  Prompts a _Hangman Game_ player.
+  Prompts a player for a move.
   """
 
   alias Hangman.Text.Client.{Player, State}
 
+  @typedoc "Player's input"
   @type input :: String.t() | {:error, atom} | :eof
 
+  @doc """
+  Displays a `message` and accepts a player's move.
+  """
   @spec accept_move(State.t(), String.t()) :: State.t() | no_return
-  def accept_move(state, msg) do
-    IO.puts(msg)
+  def accept_move(state, message) do
+    IO.puts(message)
     accept_move(state)
   end
 
+  @doc """
+  Accepts a player's move.
+  """
   @spec accept_move(State.t()) :: State.t() | no_return
-  def accept_move(%State{player_name: player_name} = state) do
-    "#{player_name}, your guess (or stop): "
+  def accept_move(%State{} = state) do
+    "Your guess (or stop): "
     |> IO.gets()
     |> check_input(state)
   end

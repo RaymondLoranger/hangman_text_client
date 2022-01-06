@@ -1,29 +1,32 @@
 defmodule Hangman.Text.Client.State do
   @moduledoc """
-  Holds the state of a text client playing the _Hangman Game_.
+  Creates a state struct for the _Hangman Game_.
+
+  The state struct contains the fields `game_name`, `tally` and `guess`
+  representing the characteristics of a state in the _Hangman Game_.
   """
 
   alias __MODULE__
   alias Hangman.{Engine, Game}
 
-  @enforce_keys [:game_name, :player_name, :tally, :guess]
-  defstruct [:game_name, :player_name, :tally, :guess]
+  @enforce_keys [:game_name, :tally]
+  defstruct [:game_name, :tally, :guess]
 
-  @type player_name :: String.t()
+  @typedoc "A state struct for the Hangman Game"
   @type t :: %State{
           game_name: Game.name(),
-          player_name: player_name,
           tally: Game.tally(),
-          guess: String.codepoint()
+          guess: Game.letter() | nil
         }
 
-  @spec new(Game.name(), player_name) :: t
-  def new(game_name, player_name) do
+  @doc """
+  Creates a state struct from a `game_name`.
+  """
+  @spec new(Game.name()) :: t
+  def new(game_name) do
     %State{
       game_name: game_name,
-      player_name: player_name,
-      tally: Engine.tally(game_name),
-      guess: ""
+      tally: Engine.tally(game_name)
     }
   end
 end

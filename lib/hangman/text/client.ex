@@ -8,7 +8,7 @@ defmodule Hangman.Text.Client do
   ##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
 
-  alias __MODULE__.{Interact, State}
+  alias __MODULE__.Interact
 
   @doc """
   Starts a _Hangman Game_.
@@ -17,60 +17,60 @@ defmodule Hangman.Text.Client do
 
   ### Short names
 
-    Start the engine:
+  Start the engine:
 
     - `cd hangman_engine`
     - `iex --sname hangman_engine -S mix`
     - `:observer.start() # optional`
 
-    Start each client in a different node:
+  Start each client in a different node:
 
     - `cd hangman_text_client`
     - `set "MIX_ENV=dev" && iex --sname mike -S mix`
-    - `Hangman.Text.Client.start("Mike")`
+    - `Hangman.Text.Client.start()`
 
   ### Long names
 
-    Start the engine:
+  Start the engine:
 
     - `cd hangman_engine`
     - `iex --name hangman_engine@rays.supratech.ca -S mix`
     - `:observer.start() # optional`
 
-    Start each client in a different node:
+  Start each client in a different node:
 
     - `cd hangman_text_client`
     - `set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix`
-    - `Hangman.Text.Client.start("Mike")`
+    - `Hangman.Text.Client.start()`
 
   ### Short names using releases
 
-    Start the engine:
+  Start the engine:
 
     - `cd hangman_engine`
     - `iex --sname hangman_engine --cookie fortune -S mix`
     - `:observer.start() # optional`
 
-    Start each client in a different node:
+  Start each client in a different node:
 
     - `cd hangman_text_client`
     - `"_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex`
-    - `Hangman.Text.Client.start("Mike")`
+    - `Hangman.Text.Client.start()`
 
   ### Long names using releases
 
-    Start the engine:
+  Start the engine:
 
     - `cd hangman_engine`
     - `iex --name hangman_engine@rays.supratech.ca --cookie fortune -S mix`
     - `:observer.start() # optional`
 
-    Start each client in a different node:
+  Start each client in a different node:
 
     - `cd hangman_text_client`
     - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
-    - `Hangman.Text.Client.start("Mike")`
+    - `Hangman.Text.Client.start()`
   """
-  @spec start(State.player_name()) :: no_return
-  defdelegate start(player_name), to: Interact
+  @spec start :: no_return
+  defdelegate start, to: Interact
 end
