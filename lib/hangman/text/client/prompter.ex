@@ -5,9 +5,6 @@ defmodule Hangman.Text.Client.Prompter do
 
   alias Hangman.Text.Client.{Player, State}
 
-  @typedoc "Player's input"
-  @type input :: String.t() | {:error, atom} | :eof
-
   @doc """
   Displays a `message` and accepts a player's move.
   """
@@ -29,12 +26,15 @@ defmodule Hangman.Text.Client.Prompter do
 
   ## Private functions
 
+  # "Player's input"
+  @typep input :: String.t() | {:error, atom} | :eof
+
   @spec check_input(input, State.t()) :: State.t() | no_return
   defp check_input({:error, reason}, state),
-    do: Player.end_game(state, "Game ended: #{reason}.")
+    do: Player.end_game(state, "Game ended: #{inspect(reason)}.")
 
   defp check_input(:eof, state),
-    do: Player.end_game(state, "Looks like you gave up.")
+    do: Player.end_game(state, "Looks like you gave up somehow.")
 
   defp check_input(input, state) do
     case String.trim(input) do
