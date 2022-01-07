@@ -6,10 +6,17 @@ Text client for the _Hangman Game_.
 
 ## Usage
 
-To use `Hangman Text Client` locally, run these commands:
+To use `Hangman Text Client` locally, clone and compile it:
 
   - `git clone https://github.com/RaymondLoranger/hangman_text_client`
   - `cd hangman_text_client`
+  - `mix deps.get`
+  - `mix compile`
+
+You must also clone and compile the `Hangman Engine` app:
+
+  - `git clone https://github.com/RaymondLoranger/hangman_engine`
+  - `cd hangman_engine`
   - `mix deps.get`
   - `mix compile`
 
