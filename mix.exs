@@ -4,7 +4,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.31",
+      version: "0.1.32",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Game",
@@ -28,7 +28,6 @@ defmodule Hangman.Text.Client.Mixfile do
 
   defp package do
     [
-      # NOTE: "config/runtime.exs" included automatically!
       files: ["lib", "mix.exs", "README*"],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],
