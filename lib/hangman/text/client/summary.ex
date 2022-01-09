@@ -13,8 +13,8 @@ defmodule Hangman.Text.Client.Summary do
     IO.puts("""
 
     Word so far:  #{Enum.join(tally.letters, " ")}
-    Used letters: #{Enum.join(tally.guesses, " ")}
     Guesses left: #{tally.turns_left}
+    Letters used: #{Enum.join(tally.guesses, " ")}
     """)
 
     state
