@@ -1,35 +1,15 @@
-defmodule Hangman.Text.Client.Interact do
-  @moduledoc """
-  Interacts with a client playing a _Hangman Game_.
-  """
-
+defmodule Hangman.Text.Client.Engine do
   use PersistConfig
 
   alias Hangman.{Engine, Game}
-  alias Hangman.Text.Client.{Player, State}
-
-  @doc """
-  Starts a game.
-  """
-  @spec start :: no_return
-  def start do
-    case node() do
-      :nonode@nohost -> Local.new_game()
-      _else -> Remote.new_game()
-    end
-    engine_node()
-    |> new_game("#{node()}")
-    |> State.new()
-    |> Player.play()
-  end
-
-  ## Private functions
-
-  @spec engine_node :: node
-  defp engine_node, do: get_env(:engine_node)
+  alias Hangman.Engine.TopSup
+  # alias Hangman.Text.Client.{Player, State}
 
   @spec new_game(node, Game.name()) :: Game.name() | no_return
-  defp new_game(engine_node, game_name) do
+  def new_game(:nonode@nohost = _node) do
+    {:ok, _pid} = TopSup.start(:normal, :ok)
+  end
+  def new_game(engine_node, game_name) do
     if Node.connect(engine_node) do
       IO.puts("Connected to node #{inspect(engine_node)}...")
     else
@@ -57,4 +37,10 @@ defmodule Hangman.Text.Client.Interact do
         exit(error)
     end
   end
+
+
+  ## Private functions
+
+  @spec engine_node :: node
+  defp engine_node, do: get_env(:engine_node)
 end
