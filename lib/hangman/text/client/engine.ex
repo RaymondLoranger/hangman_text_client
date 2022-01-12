@@ -1,7 +1,7 @@
 defmodule Hangman.Text.Client.Engine do
   @moduledoc """
   Starts a game locally or remotely:
-  
+
     - locally when local node is inactive
     - remotely on node `:hangman_engine@<hostname>` otherwise
   """
@@ -42,7 +42,7 @@ defmodule Hangman.Text.Client.Engine do
         IO.puts("Hangman Engine node #{inspect(engine_node)} is down.")
         self() |> Process.exit(:normal)
 
-      {:badrpc, {:EXIT, {:undef, _}}} ->
+      {:badrpc, {:EXIT, {reason, _}}} when reason in [:undef, :noproc] ->
         IO.puts("Hangman Engine not started on node #{inspect(engine_node)}.")
         self() |> Process.exit(:normal)
 

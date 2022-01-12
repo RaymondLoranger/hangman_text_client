@@ -11,7 +11,7 @@ defmodule Hangman.Text.Client do
   alias __MODULE__.{Engine, Player, State}
 
   @doc """
-  Starts a _Hangman Game_ localy or remotely.
+  Starts a _Hangman Game_ locally or remotely.
   
   ## Locally when local node is not alive
   
