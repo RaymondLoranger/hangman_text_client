@@ -1,7 +1,7 @@
 defmodule Hangman.Text.Client.Engine do
   @moduledoc """
   Starts a game locally or remotely:
-
+  
     - locally when local node is inactive
     - remotely on node `:hangman_engine@<hostname>` otherwise
   """
