@@ -4,7 +4,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.47",
+      version: "0.1.48",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Game",
