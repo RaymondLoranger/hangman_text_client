@@ -20,6 +20,16 @@ You must also clone and compile the `Hangman Engine` app:
   - `mix deps.get`
   - `mix compile`
 
+## Locally when local node is not alive
+
+Start each client like so:
+
+  - `cd hangman_text_client`
+  - `iex -S mix`
+  - `Hangman.Text.Client.start()`
+
+## Remotely when local node is alive
+
 App `:hangman_engine` must run in node `:hangman_engine@<hostname>`.
 
 ### Short names

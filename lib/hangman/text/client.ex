@@ -8,10 +8,20 @@ defmodule Hangman.Text.Client do
   ##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
 
-  alias __MODULE__.Interact
+  alias __MODULE__.{Engine, Player, State}
 
   @doc """
-  Starts a _Hangman Game_.
+  Starts a _Hangman Game_ localy or remotely.
+
+  ## Locally when local node is not alive
+
+  Start each client like so:
+
+    - `cd hangman_text_client`
+    - `iex -S mix`
+    - `Hangman.Text.Client.start()`
+
+  ## Remotely when local node is alive
 
   App `:hangman_engine` must run in node `:hangman_engine@<hostname>`.
 
@@ -72,5 +82,5 @@ defmodule Hangman.Text.Client do
     - `Hangman.Text.Client.start()`
   """
   @spec start :: no_return
-  defdelegate start, to: Interact
+  def start, do: node() |> Engine.new_game() |> State.new() |> Player.play()
 end

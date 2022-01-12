@@ -1,15 +1,28 @@
 defmodule Hangman.Text.Client.Engine do
+  @moduledoc """
+  Starts a game locally or remotely:
+
+    - locally when local node is inactive
+    - remotely on node `:hangman_engine@<hostname>` otherwise
+  """
   use PersistConfig
 
   alias Hangman.{Engine, Game}
-  alias Hangman.Engine.TopSup
-  # alias Hangman.Text.Client.{Player, State}
 
-  @spec new_game(node, Game.name()) :: Game.name() | no_return
-  def new_game(:nonode@nohost = _node) do
-    {:ok, _pid} = TopSup.start(:normal, :ok)
+  @doc """
+  Starts a game locally or remotely.
+  """
+  @spec new_game(node) :: Game.name() | no_return
+  def new_game(:nonode@nohost = _local_node) do
+    {:ok, _apps} = Application.ensure_all_started(:hangman_engine)
+    game_name = Game.random_name()
+    {:ok, _pid} = Engine.new_game(game_name)
+    game_name
   end
-  def new_game(engine_node, game_name) do
+
+  def new_game(local_node) do
+    {engine_node, game_name} = {engine_node(), "#{local_node}"}
+
     if Node.connect(engine_node) do
       IO.puts("Connected to node #{inspect(engine_node)}...")
     else
@@ -37,7 +50,6 @@ defmodule Hangman.Text.Client.Engine do
         exit(error)
     end
   end
-
 
   ## Private functions
 
