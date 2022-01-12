@@ -5,6 +5,7 @@ defmodule Hangman.Text.Client.Engine do
     - locally when local node is inactive
     - remotely on node `:hangman_engine@<hostname>` otherwise
   """
+
   use PersistConfig
 
   alias Hangman.{Engine, Game}
