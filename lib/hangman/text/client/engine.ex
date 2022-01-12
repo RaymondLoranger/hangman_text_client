@@ -2,7 +2,7 @@ defmodule Hangman.Text.Client.Engine do
   @moduledoc """
   Starts a game locally or remotely:
 
-    - locally when local node is inactive
+    - locally when local node is not alive
     - remotely on node `:hangman_engine@<hostname>` otherwise
   """
 
@@ -22,12 +22,13 @@ defmodule Hangman.Text.Client.Engine do
   end
 
   def new_game(local_node) do
-    {engine_node, game_name} = {engine_node(), "#{local_node}"}
+    game_name = Atom.to_string(local_node)
+    engine_node = engine_node()
 
     if Node.connect(engine_node) do
-      IO.puts("Connected to node #{inspect(engine_node)}...")
+      puts(:connected, {engine_node})
     else
-      IO.puts("Cannot connect to node #{inspect(engine_node)}.")
+      puts(:cannot_connect, {engine_node})
       self() |> Process.exit(:normal)
     end
 
@@ -39,12 +40,16 @@ defmodule Hangman.Text.Client.Engine do
       {:ok, _pid} ->
         game_name
 
+      {:error, {:already_started, _pid}} ->
+        puts(:game_already_started, {game_name, engine_node})
+        game_name
+
       {:badrpc, :nodedown} ->
-        IO.puts("Hangman Engine node #{inspect(engine_node)} is down.")
+        puts(:engine_node_down, {engine_node})
         self() |> Process.exit(:normal)
 
       {:badrpc, {:EXIT, {reason, _}}} when reason in [:undef, :noproc] ->
-        IO.puts("Hangman Engine not started on node #{inspect(engine_node)}.")
+        puts(:engine_not_started, {engine_node})
         self() |> Process.exit(:normal)
 
       error ->
@@ -56,4 +61,26 @@ defmodule Hangman.Text.Client.Engine do
 
   @spec engine_node :: node
   defp engine_node, do: get_env(:engine_node)
+
+  @spec puts(atom, tuple) :: :ok
+  defp puts(:cannot_connect, {node}) do
+    IO.puts("Cannot connect to node #{inspect(node)}.")
+  end
+
+  defp puts(:connected, {node}) do
+    IO.puts("Connected to node #{inspect(node)}...")
+  end
+
+  defp puts(:game_already_started, {name, node}) do
+    {name, node} = {inspect(name), inspect(node)}
+    IO.puts("Hangman Game #{name} already started on node #{node}.")
+  end
+
+  defp puts(:engine_node_down, {node}) do
+    IO.puts("Hangman Engine node #{inspect(node)} is down.")
+  end
+
+  defp puts(:engine_not_started, {node}) do
+    IO.puts("Hangman Engine not started on node #{inspect(node)}.")
+  end
 end
