@@ -5,7 +5,8 @@ defmodule Hangman.Text.Client.Summary do
 
   alias Hangman.Text.Client.State
 
-  @more :normal
+  @emit? true
+  @more :reset
   @one :light_yellow
 
   @doc """
@@ -22,7 +23,7 @@ defmodule Hangman.Text.Client.Summary do
       Letters used: #{Enum.join(tally.guesses, " ")}
       """
     ]
-    |> IO.ANSI.format(_emit? = true)
+    |> IO.ANSI.format(@emit?)
     |> IO.puts()
 
     state

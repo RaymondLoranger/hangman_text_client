@@ -8,6 +8,7 @@ defmodule Hangman.Text.Client.Player do
 
   @alphabet Enum.map(?a..?z, &<<&1>>)
   @bad :light_red
+  @emit? true
   @good :light_green
   @lost :light_magenta
   @rep :light_yellow
@@ -41,7 +42,7 @@ defmodule Hangman.Text.Client.Player do
   """
   @spec end_game(State.t(), IO.ANSI.ansidata()) :: no_return
   def end_game(%State{tally: tally, game_name: game_name}, message) do
-    message |> IO.ANSI.format(_emit? = true) |> IO.puts()
+    message |> IO.ANSI.format(@emit?) |> IO.puts()
     tally = win_lose(tally, game_name)
     IO.puts("\nThe word was: #{Enum.join(tally.letters, " ")}")
     Engine.end_game(game_name)
@@ -52,7 +53,7 @@ defmodule Hangman.Text.Client.Player do
 
   @spec continue(State.t(), IO.ANSI.ansidata()) :: no_return
   defp continue(state, message) do
-    message |> IO.ANSI.format(_emit? = true) |> IO.puts()
+    message |> IO.ANSI.format(@emit?) |> IO.puts()
     continue(state)
   end
 
