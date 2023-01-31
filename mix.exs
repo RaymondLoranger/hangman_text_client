@@ -38,7 +38,7 @@ defmodule Hangman.Text.Client.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      # App `:hangman_engine` must run in node `:hangman_engine@<hostname>`.
+      # App `:hangman_engine` should run in node `:hangman_engine@<hostname>`.
       included_applications: [:hangman_engine],
       extra_applications: [:logger]
     ]
