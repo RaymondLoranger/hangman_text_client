@@ -49,7 +49,7 @@ defmodule Hangman.Text.Client.Mixfile do
     [
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      # {:io_ansi_plus, "~> 0.1"},
+      {:io_ansi_plus, "~> 0.1"},
       {:hangman_engine, "~> 0.1"},
       {:hangman_game, "~> 0.1"},
       {:persist_config, "~> 0.4", runtime: false}
