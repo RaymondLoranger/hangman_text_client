@@ -2,7 +2,7 @@ defmodule Hangman.Text.Client.Engine do
   @moduledoc """
   Starts a game locally or remotely:
 
-    - locally when local node is not alive
+    - locally when local node is not alive (`:nonode@nohost`)
     - remotely on node `:hangman_engine@<hostname>` otherwise
   """
 
@@ -11,18 +11,21 @@ defmodule Hangman.Text.Client.Engine do
   alias Hangman.{Engine, Game}
 
   @doc """
-  Starts a game locally or remotely.
+  Starts locally or remotely a _Hangman Game_ named `game_name`.
   """
-  @spec new_game(node) :: Game.name() | no_return
-  def new_game(:nonode@nohost = _local_node) do
+  @spec new_game(Game.name()) :: Game.name() | no_return
+  def new_game(game_name), do: node() |> new_game(game_name)
+
+  ## Private functions
+
+  @spec new_game(node, Game.name()) :: Game.name() | no_return
+  defp new_game(:nonode@nohost = _local_node, game_name) do
     {:ok, _apps} = Application.ensure_all_started(:hangman_engine)
-    game_name = Game.random_name()
     {:ok, _pid} = Engine.new_game(game_name)
     game_name
   end
 
-  def new_game(local_node) do
-    game_name = Atom.to_string(local_node)
+  defp new_game(_local_node, game_name) do
     engine_node = engine_node()
 
     if Node.connect(engine_node) do
@@ -42,6 +45,7 @@ defmodule Hangman.Text.Client.Engine do
 
       {:error, {:already_started, _pid}} ->
         puts(:game_already_started, {game_name, engine_node})
+        self() |> Process.exit(:normal)
         game_name
 
       {:badrpc, :nodedown} ->
@@ -56,8 +60,6 @@ defmodule Hangman.Text.Client.Engine do
         exit(error)
     end
   end
-
-  ## Private functions
 
   @spec engine_node :: node
   defp engine_node, do: get_env(:engine_node)

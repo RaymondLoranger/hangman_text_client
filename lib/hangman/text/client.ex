@@ -9,9 +9,12 @@ defmodule Hangman.Text.Client do
   """
 
   alias __MODULE__.{Engine, Player, State}
+  alias Hangman.Game
 
   @doc """
-  Starts a _Hangman Game_ locally or remotely.
+  Starts locally or remotely a _Hangman Game_ named `game_name`.
+  The default value for `game_name` is provided by function
+  `Hangman.Game.random_name/0`.
   
   ## Locally when local node is not alive
   
@@ -112,6 +115,8 @@ defmodule Hangman.Text.Client do
   
     - etc.
   """
-  @spec start :: no_return
-  def start, do: node() |> Engine.new_game() |> State.new() |> Player.play()
+  @spec start(Game.name()) :: no_return
+  def start(game_name \\ Game.random_name()) do
+    Engine.new_game(game_name) |> State.new() |> Player.play()
+  end
 end
