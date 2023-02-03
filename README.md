@@ -26,11 +26,14 @@ Start each client like so:
 
   - `cd hangman_text_client`
   - `iex -S mix`
+  - `:observer.start() # optional`
   - `Hangman.Text.Client.start()`
 
 ## Remotely when local node is alive
 
-App `:hangman_engine` must run in node `:hangman_engine@<hostname>`.
+App `:hangman_engine` must run in node `:hangman_engine@<hostname>`
+where <hostname> is either the full host name if long names are used,
+or the first part of the full host name if short names are used.
 
 ### Short names
 
@@ -46,6 +49,12 @@ Start each client in a different node:
   - `set "MIX_ENV=dev" && iex --sname mike -S mix`
   - `Hangman.Text.Client.start()`
 
+  * `cd hangman_text_client`
+  * `set "MIX_ENV=dev" && iex --sname joe -S mix`
+  * `Hangman.Text.Client.start()`
+
+  - etc.
+
 ### Long names
 
 Start the engine:
@@ -59,6 +68,12 @@ Start each client in a different node:
   - `cd hangman_text_client`
   - `set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix`
   - `Hangman.Text.Client.start()`
+
+  * `cd hangman_text_client`
+  * `set "MIX_ENV=prod" && iex --name joe@rays.supratech.ca -S mix`
+  * `Hangman.Text.Client.start()`
+
+  - etc.
 
 ### Short names using releases
 
@@ -74,6 +89,13 @@ Start each client in a different node:
   - `"_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex`
   - `Hangman.Text.Client.start()`
 
+  * `cd hangman_text_client`
+  * `set RELEASE_NODE=joe@rays`
+  * `"_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex`
+  * `Hangman.Text.Client.start()`
+
+  - etc.
+
 ### Long names using releases
 
 Start the engine:
@@ -87,3 +109,10 @@ Start each client in a different node:
   - `cd hangman_text_client`
   - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
   - `Hangman.Text.Client.start()`
+
+  * `cd hangman_text_client`
+  * `set RELEASE_NODE=joe@rays.supratech.ca`
+  * `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
+  * `Hangman.Text.Client.start()`
+
+  - etc.

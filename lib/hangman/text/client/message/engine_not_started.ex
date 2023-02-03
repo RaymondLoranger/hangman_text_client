@@ -4,12 +4,12 @@ defmodule Hangman.Text.Client.Message.EngineNotStarted do
   @spec message(node) :: ANSI.ansilist()
   def message(node) do
     [
-      :light_yellow,
+      :gold,
       "Hangman Engine not started on node ",
       :light_white,
       :italic,
       "#{inspect(node)}",
-      :light_yellow,
+      :gold,
       :not_italic,
       "."
     ]

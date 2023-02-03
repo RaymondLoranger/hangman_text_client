@@ -116,7 +116,7 @@ defmodule Hangman.Text.Client do
     - etc.
   """
   @spec start(Game.name()) :: no_return
-  def start(game_name \\ Game.random_name()) do
+  def start(game_name \\ Hangman.Game.random_name()) do
     Engine.new_game(game_name) |> State.new() |> Player.play()
   end
 end

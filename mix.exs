@@ -4,7 +4,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.55",
+      version: "0.1.56",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Game",
@@ -49,9 +49,9 @@ defmodule Hangman.Text.Client.Mixfile do
     [
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
-      {:io_ansi_plus, "~> 0.1"},
       {:hangman_engine, "~> 0.1"},
       {:hangman_game, "~> 0.1"},
+      {:io_ansi_plus, "~> 0.1"},
       {:persist_config, "~> 0.4", runtime: false}
     ]
   end
