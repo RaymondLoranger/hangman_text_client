@@ -31,9 +31,9 @@ Start each client like so:
 
 ## Remotely when local node is alive
 
-App `:hangman_engine` must run in node `:hangman_engine@<hostname>`
-where `<hostname>` is either the full host name if long names are used,
-or the first part of the full host name if short names are used.
+App `:hangman_engine` must run in node `:hangman_engine@<hostname>` where
+`<hostname>` is either the full host name if long names are used, or the first
+part of the full host name if short names are used.
 
 ### Short names
 
