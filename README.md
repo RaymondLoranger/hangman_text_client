@@ -86,6 +86,7 @@ Start the engine:
 Start each client in a different node:
 
   - `cd hangman_text_client`
+  - `set RELEASE_NODE=mike@rays`
   - `"_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex`
   - `Hangman.Text.Client.start()`
 
@@ -107,6 +108,7 @@ Start the engine:
 Start each client in a different node:
 
   - `cd hangman_text_client`
+  - `set RELEASE_NODE=mike@rays.supratech.ca`
   - `"_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex`
   - `Hangman.Text.Client.start()`
 
