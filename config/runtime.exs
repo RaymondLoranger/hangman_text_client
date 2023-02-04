@@ -1,8 +1,9 @@
 import Config
 
-# App `:hangman_engine` should run in node `:hangman_engine@<hostname>` where
-# <hostname> is either the full host name if long names are used, or the first
-# part of the full host name if short names are used.
+# When local node is alive, app `:hangman_engine` must run on node
+# `:hangman_engine@<hostname>` where `<hostname>` is either the full host name
+# if long names are used, or the first part of the full host name if short names
+# are used.
 
 {:ok, host_name} = :inet.gethostname()
 
@@ -18,10 +19,10 @@ engine_node =
     {:ok, {_, full_name, _, _, _, _}} =
       :inet.gethostbyaddr('#{n1}.#{n2}.#{n3}.#{n4}')
 
-    # long name used => :"hangman_engine@rays.supratech.ca"
+    # long names used => :"hangman_engine@rays.supratech.ca"
     :"hangman_engine@#{full_name}"
   else
-    # short name used => :hangman_engine@rays
+    # short names used => :hangman_engine@rays
     :"hangman_engine@#{host_name}"
   end
 
