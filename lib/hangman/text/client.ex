@@ -71,7 +71,7 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node:
+  Start each client in a different node using a long name:
   
   ```
   cd hangman_text_client
@@ -91,7 +91,7 @@ defmodule Hangman.Text.Client do
   
   ### Short names using releases
   
-  Start the engine:
+  Start the engine using a short name:
   
   ```
   cd hangman_engine
@@ -99,7 +99,7 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node:
+  Start each client in a different node setting a short name:
   
   ```
   cd hangman_text_client
@@ -121,7 +121,7 @@ defmodule Hangman.Text.Client do
   
   ### Long names using releases
   
-  Start the engine:
+  Start the engine using a long name:
   
   ```
   cd hangman_engine
@@ -129,7 +129,7 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node:
+  Start each client in a different node setting a long name:
   
   ```
   cd hangman_text_client
