@@ -43,22 +43,12 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node using a short name:
+  Start a game from a different node using a short name:
   
   ```
   cd hangman_text_client
   set "MIX_ENV=dev" && iex --sname mike -S mix
   Hangman.Text.Client.start()
-  ```
-  
-  ```
-  cd hangman_text_client
-  set "MIX_ENV=dev" && iex --sname joe -S mix
-  Hangman.Text.Client.start()
-  ```
-  
-  ```
-  etc.
   ```
   
   ### Long names
@@ -71,22 +61,12 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node using a long name:
+  Start a game from a different node using a long name:
   
   ```
   cd hangman_text_client
   set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix
   Hangman.Text.Client.start()
-  ```
-  
-  ```
-  cd hangman_text_client
-  set "MIX_ENV=prod" && iex --name joe@rays.supratech.ca -S mix
-  Hangman.Text.Client.start()
-  ```
-  
-  ```
-  etc.
   ```
   
   ### Short names using releases
@@ -99,24 +79,13 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node setting a short name:
+  Start a game from a different node setting a short name:
   
   ```
   cd hangman_text_client
   set RELEASE_NODE=mike@rays
   "_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex
   Hangman.Text.Client.start()
-  ```
-  
-  ```
-  cd hangman_text_client
-  set RELEASE_NODE=joe@rays
-  "_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex
-  Hangman.Text.Client.start()
-  ```
-  
-  ```
-  etc.
   ```
   
   ### Long names using releases
@@ -129,24 +98,13 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start each client in a different node setting a long name:
+  Start a game from a different node setting a long name:
   
   ```
   cd hangman_text_client
   set RELEASE_NODE=mike@rays.supratech.ca
   "_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex
   Hangman.Text.Client.start()
-  ```
-  
-  ```
-  cd hangman_text_client
-  set RELEASE_NODE=joe@rays.supratech.ca
-  "_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex
-  Hangman.Text.Client.start()
-  ```
-  
-  ```
-  etc.
   ```
   """
   @spec start(Game.name()) :: no_return
