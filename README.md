@@ -24,6 +24,8 @@ mix deps.get
 mix compile
 ```
 
+Also create the dev and prod releases if you wish to use releases.
+
 ## Locally when local node is not alive
 
 Start a game like so:
