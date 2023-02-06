@@ -4,12 +4,12 @@ defmodule Hangman.Text.Client.Message.ConnectedToNode do
   @spec message(node) :: ANSI.ansilist()
   def message(node) do
     [
-      :gold,
+      :light_yellow,
       "Connected to node ",
       :light_white,
       :italic,
       "#{inspect(node)}",
-      :gold,
+      :light_yellow,
       :not_italic,
       "..."
     ]

@@ -43,7 +43,7 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start a game from a different node using a short name:
+  Start a game from a different node with a short name:
   
   ```
   cd hangman_text_client
@@ -61,7 +61,7 @@ defmodule Hangman.Text.Client do
   :observer.start() # optional
   ```
   
-  Start a game from a different node using a long name:
+  Start a game from a different node with a long name:
   
   ```
   cd hangman_text_client

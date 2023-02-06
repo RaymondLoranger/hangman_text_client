@@ -4,7 +4,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.64",
+      version: "0.1.65",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Game",
@@ -12,6 +12,10 @@ defmodule Hangman.Text.Client.Mixfile do
       description: description(),
       package: package(),
       deps: deps(),
+      # Otherwise Dialyzer would complain:
+      # Function Hangman.Engine.new_game/1 does not exist.
+      # Function Hangman.Engine.make_move/2 does not exist.
+      # etc.
       dialyzer: [plt_add_apps: [:hangman_engine]]
     ]
   end

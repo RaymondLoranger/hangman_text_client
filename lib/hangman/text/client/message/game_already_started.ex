@@ -5,18 +5,18 @@ defmodule Hangman.Text.Client.Message.GameAlreadyStarted do
   @spec message(Game.name(), node) :: ANSI.ansilist()
   def message(name, node) do
     [
-      :gold,
+      :light_yellow,
       "Hangman Game ",
       :light_white,
       :italic,
       "#{name}",
-      :gold,
+      :light_yellow,
       :not_italic,
       " already started on node ",
       :light_white,
       :italic,
       "#{inspect(node)}",
-      :gold,
+      :light_yellow,
       :not_italic,
       "."
     ]

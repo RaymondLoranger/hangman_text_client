@@ -25,6 +25,7 @@ defmodule Hangman.Text.Client.Summary do
 
   @spec message(State.t()) :: ANSI.ansilist()
   defp message(%State{tally: %{turns_left: 1} = tally}) do
+    # Message highlighted to signal last guess...
     [
       :reset,
       :light_yellow,

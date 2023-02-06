@@ -3,6 +3,7 @@ defmodule Hangman.Text.Client.Prompter do
   Prompts a player for a move.
   """
 
+  alias IO.ANSI.Plus, as: ANSI
   alias Hangman.Text.Client.{Player, State}
 
   @doc """
@@ -19,22 +20,24 @@ defmodule Hangman.Text.Client.Prompter do
   @typep input :: String.t() | {:error, atom} | :eof
 
   @spec check_input(input, State.t()) :: State.t() | no_return
-  defp check_input({:error, reason}, state),
-    do: Player.end_game(state, "Game ended: #{inspect(reason)}.")
+  defp check_input({:error, reason}, state) do
+    Player.end_game(state, [:light_yellow, "Game ended: #{inspect(reason)}."])
+  end
 
-  defp check_input(:eof, state),
-    do: Player.end_game(state, "Looks like you gave up somehow.")
+  defp check_input(:eof, state) do
+    Player.end_game(state, [:light_yellow, "Looks like you gave up somehow."])
+  end
 
   defp check_input(input, state) do
     case String.trim(input) do
       "stop" ->
-        Player.end_game(state, "Looks like you gave up.")
+        Player.end_game(state, [:light_yellow, "Looks like you gave up."])
 
       <<code>> = guess when code in ?a..?z ->
         put_in(state.guess, guess)
 
       _bad_input ->
-        IO.puts("Please enter a single lowercase non-accented letter.\n")
+        ANSI.puts([:light_yellow, "Please enter a letter between a and z.\n"])
         accept_move(state)
     end
   end

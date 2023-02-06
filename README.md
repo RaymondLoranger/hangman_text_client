@@ -51,7 +51,7 @@ iex --sname hangman_engine -S mix
 :observer.start() # optional
 ```
 
-Start a game from a different node using a short name:
+Start a game from a different node with a short name:
 
 ```
 cd hangman_text_client
@@ -69,7 +69,7 @@ iex --name hangman_engine@rays.supratech.ca -S mix
 :observer.start() # optional
 ```
 
-Start a game from a different node using a long name:
+Start a game from a different node with a long name:
 
 ```
 cd hangman_text_client

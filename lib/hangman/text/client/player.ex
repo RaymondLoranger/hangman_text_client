@@ -35,9 +35,10 @@ defmodule Hangman.Text.Client.Player do
   @doc """
   Displays a `message` and ends the game normally.
   """
-  @spec end_game(State.t(), ANSI.ansidata()) :: no_return
+  @spec end_game(State.t(), ANSI.ansilist()) :: no_return
   def end_game(%State{tally: tally, game_name: game_name}, message) do
     ANSI.puts(message)
+    # Ensure all letters are revealed...
     %{letters: letters} = win_lose(tally, game_name)
     ["\nWord was: ", :light_cyan, " #{Enum.join(letters, " ")}"] |> ANSI.puts()
     Engine.end_game(game_name)
@@ -62,6 +63,7 @@ defmodule Hangman.Text.Client.Player do
        when game_state in [:won, :lost],
        do: tally
 
+  # If game was stopped, keep guessing until it's won or lost.
   defp win_lose(%{guesses: guesses}, game_name) do
     [guess | _] = @alphabet -- guesses
     Engine.make_move(game_name, guess) |> win_lose(game_name)
