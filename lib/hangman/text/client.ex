@@ -8,6 +8,8 @@ defmodule Hangman.Text.Client do
   ##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
   """
 
+  use PersistConfig
+
   alias __MODULE__.{Engine, Player, State}
   alias Hangman.Game
 
@@ -111,4 +113,17 @@ defmodule Hangman.Text.Client do
   def start(game_name \\ Hangman.Game.random_name()) do
     Engine.new_game(game_name) |> State.new() |> Player.play()
   end
+
+  @doc ~S"""
+  Returns the hangman engine node.
+  
+  ## Examples
+  
+      iex> alias Hangman.Text.Client
+      iex> engine_node = Client.engine_node()
+      iex> "#{engine_node}" =~ "hangman_engine@"
+      true
+  """
+  @spec engine_node :: node
+  def engine_node, do: get_env(:engine_node)
 end

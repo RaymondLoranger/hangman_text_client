@@ -10,6 +10,7 @@ defmodule Hangman.Text.Client.Engine do
 
   alias IO.ANSI.Plus, as: ANSI
   alias Hangman.{Engine, Game}
+  alias Hangman.Text.Client
 
   alias Hangman.Text.Client.Message.{
     CannotConnectToNode,
@@ -36,7 +37,7 @@ defmodule Hangman.Text.Client.Engine do
   end
 
   defp new_game(_local_node, game_name) do
-    engine_node = engine_node()
+    engine_node = Client.engine_node()
 
     if Node.connect(engine_node) do
       ConnectedToNode.message(engine_node) |> ANSI.puts()
@@ -79,7 +80,4 @@ defmodule Hangman.Text.Client.Engine do
         exit(error)
     end
   end
-
-  @spec engine_node :: node
-  defp engine_node, do: get_env(:engine_node)
 end
