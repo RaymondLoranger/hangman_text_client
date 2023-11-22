@@ -17,7 +17,7 @@ engine_node =
       :inet.gethostbyname(host_name, :inet)
 
     {:ok, {_, full_name, _, _, _, _}} =
-      :inet.gethostbyaddr('#{n1}.#{n2}.#{n3}.#{n4}')
+      :inet.gethostbyaddr(~c"#{n1}.#{n2}.#{n3}.#{n4}")
 
     # long names used => :"hangman_engine@rays.supratech.ca"
     :"hangman_engine@#{full_name}"
