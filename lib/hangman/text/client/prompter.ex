@@ -33,7 +33,7 @@ defmodule Hangman.Text.Client.Prompter do
       "stop" ->
         Player.end_game(state, [:light_yellow, "Looks like you gave up."])
 
-      <<code>> = guess when code in ?a..?z ->
+      <<byte>> = guess when byte in ?a..?z ->
         put_in(state.guess, guess)
 
       _bad_input ->
