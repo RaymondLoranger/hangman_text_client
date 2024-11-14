@@ -24,7 +24,7 @@ mix deps.get
 mix compile
 ```
 
-If you wish to use releases, see [release notes](release notes.txt).
+If you wish to use releases, see [release notes](release%20notes.txt).
 
 ## Locally when local node is not alive
 
