@@ -30,7 +30,7 @@ defmodule Hangman.Text.Client.Engine do
   ## Private functions
 
   @spec new_game(node, Game.name()) :: Game.name() | no_return
-  defp new_game(:nonode@nohost = _local_node, game_name) do
+  defp new_game(_local_node = :nonode@nohost, game_name) do
     {:ok, _apps} = Application.ensure_all_started(:hangman_engine)
     {:ok, _pid} = Engine.new_game(game_name)
     game_name

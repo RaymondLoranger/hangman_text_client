@@ -24,7 +24,7 @@ mix deps.get
 mix compile
 ```
 
-Also create the dev and prod releases if you wish to use releases.
+If you wish to use releases, see [release notes](release notes.txt).
 
 ## Locally when local node is not alive
 

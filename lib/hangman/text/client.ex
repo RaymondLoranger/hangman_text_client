@@ -18,9 +18,11 @@ defmodule Hangman.Text.Client do
   The default value for `game_name` is provided by function
   `Hangman.Game.random_name/0`.
 
-  ## Locally when local node is not alive
+  ## LOCALLY WHEN LOCAL NODE IS NOT ALIVE
 
   Start each client like so:
+
+  ### *WITHOUT USING RELEASES*
 
   ```
   cd hangman_text_client
@@ -29,13 +31,33 @@ defmodule Hangman.Text.Client do
   Hangman.Text.Client.start()
   ```
 
-  ## Remotely when local node is alive
+  ### *USING RELEASES*
+
+  #### Commmand shell
+
+  ```
+  cd hangman_text_client
+  "_build/nonode/rel/hangman_text_client/bin/hangman_text_client" start_iex
+  :observer.start() # optional
+  Hangman.Text.Client.start()
+  ```
+
+  #### PowerShell
+
+  ```
+  cd hangman_text_client
+  _build/nonode/rel/hangman_text_client/bin/hangman_text_client start_iex
+  :observer.start() # optional
+  Hangman.Text.Client.start()
+  ```
+
+  ## REMOTELY WHEN LOCAL NODE IS ALIVE
 
   App `:hangman_engine` must run on node `:hangman_engine@<hostname>` where
   `<hostname>` is either the full host name if long names are used, or the first
   part of the full host name if short names are used.
 
-  ### Short names
+  ### *SHORT NAMES WITHOUT USING RELEASES*
 
   Start the engine using a short name:
 
@@ -49,11 +71,13 @@ defmodule Hangman.Text.Client do
 
   ```
   cd hangman_text_client
-  set "MIX_ENV=dev" && iex --sname mike -S mix
+  set "MIX_ENV=dev" && iex --sname mike -S mix # Command shell
+  $Env:MIX_ENV = "dev"; iex --sname mike -S mix # PowerShell
+  :observer.start() # optional
   Hangman.Text.Client.start()
   ```
 
-  ### Long names
+  ### *LONG NAMES*
 
   Start the engine using a long name:
 
@@ -67,11 +91,13 @@ defmodule Hangman.Text.Client do
 
   ```
   cd hangman_text_client
-  set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix
+  set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix # Command shell
+  $Env:MIX_ENV = "prod"; iex --name mike@rays.supratech.ca -S mix # PowerShell
+  :observer.start() # optional
   Hangman.Text.Client.start()
   ```
 
-  ### Short names using releases
+  ### *SHORT NAMES USING RELEASES*
 
   Start the engine using a short name:
 
@@ -90,7 +116,7 @@ defmodule Hangman.Text.Client do
   Hangman.Text.Client.start()
   ```
 
-  ### Long names using releases
+  ### *LONG NAMES USING RELEASES*
 
   Start the engine using a long name:
 
@@ -102,10 +128,23 @@ defmodule Hangman.Text.Client do
 
   Start a game from a different node with a long name:
 
+  #### *Commmand shell*
+
   ```
   cd hangman_text_client
   set RELEASE_NODE=mike@rays.supratech.ca
   "_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex
+  :observer.start() # optional
+  Hangman.Text.Client.start()
+  ```
+
+  #### *PowerShell*
+
+  ```
+  cd hangman_text_client
+  $Env:RELEASE_NODE = "mike@rays.supratech.ca"
+  _build/prod/rel/hangman_text_client/bin/hangman_text_client start_iex
+  :observer.start() # optional
   Hangman.Text.Client.start()
   ```
   """

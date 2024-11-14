@@ -3,7 +3,7 @@ defmodule Hangman.Text.Client.State do
   Creates a state struct for the _Hangman Game_.
 
   The state struct contains the fields `game_name`, `tally` and `guess`
-  representing the characteristics of a state in the _Hangman Game_.
+  representing the properties of a state in the _Hangman Game_.
   """
 
   alias __MODULE__

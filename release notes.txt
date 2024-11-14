@@ -1,0 +1,36 @@
+To create the nonode, dev and prod releases:
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
+mix release.init
+
+1. nonode release:
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+edit rel/env.bat.eex to look like this:
+
+  @echo off
+  set RELEASE_DISTRIBUTION=none
+
+set "MIX_ENV=nonode" && mix release &:: Command shell
+$Env:MIX_ENV = "nonode"; mix release # PowerShell
+
+2. dev release:
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+edit rel/env.bat.eex to look like this:
+
+  @echo off
+  set RELEASE_COOKIE=fortune
+  set RELEASE_DISTRIBUTION=sname
+
+set "MIX_ENV=dev" && mix release &:: Command shell
+$Env:MIX_ENV = "dev"; mix release # PowerShell
+
+3. prod release:
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+edit rel/env.bat.eex to look like this:
+
+  @echo off
+  set RELEASE_COOKIE=fortune
+  set RELEASE_DISTRIBUTION=name
+
+set "MIX_ENV=prod" && mix release &:: Command shell
+$Env:MIX_ENV = "prod"; mix release # PowerShell

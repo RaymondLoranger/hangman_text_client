@@ -30,15 +30,15 @@ defmodule Hangman.Text.Client.Summary do
       :reset,
       :light_yellow,
       "\nWord so far:  ",
-      :light_magenta,
+      :fuchsia,
       "#{Enum.join(tally.letters, @sp)}",
       :light_yellow,
       "\nGuesses left: ",
-      :light_magenta,
+      :fuchsia,
       "1",
       :light_yellow,
       "\nLetters used: ",
-      :light_magenta,
+      :fuchsia,
       "#{Enum.join(tally.guesses, @sp)}\n"
     ]
   end
