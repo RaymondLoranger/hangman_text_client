@@ -20,10 +20,13 @@ defmodule Hangman.Text.Client.Prompter do
   @typep input :: String.t() | {:error, atom} | :eof
 
   @spec check_input(input, State.t()) :: State.t() | no_return
+  # Type `^G` (Ctrl+G) then `h` then `i 1` and then `c 1`.
   defp check_input({:error, reason}, state) do
     Player.end_game(state, [:light_yellow, "Game ended: #{inspect(reason)}."])
   end
 
+  # Should be `^D` (Ctrl+D) but it does not work.
+  # See https://github.com/erlang/otp/issues/4414
   defp check_input(:eof, state) do
     Player.end_game(state, [:light_yellow, "Looks like you gave up somehow."])
   end

@@ -4,10 +4,10 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.78",
+      version: "0.1.79",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      name: "Hangman Game",
+      name: "Hangman Text Client",
       source_url: source_url(),
       description: description(),
       package: package(),
@@ -42,7 +42,7 @@ defmodule Hangman.Text.Client.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      # A priori app :hangman_engine should run on a different node.
+      # Normally app :hangman_engine should run on a remote node.
       included_applications: [:hangman_engine],
       extra_applications: [:logger]
     ]

@@ -34,7 +34,7 @@ defmodule Hangman.Text.Client.Player do
   Displays a `message` and ends the game normally.
   """
   @spec end_game(State.t(), ANSI.ansilist()) :: no_return
-  def end_game(%State{tally: tally, game_name: game_name}, message)
+  def end_game(%State{game_name: game_name, tally: tally}, message)
       when tally.game_state in [:won, :lost] do
     ANSI.puts(message)
 
@@ -50,7 +50,7 @@ defmodule Hangman.Text.Client.Player do
   end
 
   def end_game(%State{game_name: game_name} = state, message) do
-    # Game was stopped: resign to reveal missing letters.
+    # Game was stopped or ended: resign to reveal missing letters.
     state = put_in(state.tally, Engine.resign(game_name))
     end_game(state, message)
   end
