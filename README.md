@@ -26,9 +26,11 @@ mix compile
 
 If you wish to use releases, see [release notes](release%20notes.txt).
 
-## Locally when local node is not alive
+## LOCALLY WHEN LOCAL NODE IS NOT ALIVE
 
-Start a game like so:
+Start each client like so:
+
+### *WITHOUT USING RELEASES*
 
 ```
 cd hangman_text_client
@@ -37,13 +39,33 @@ iex -S mix
 Hangman.Text.Client.start()
 ```
 
-## Remotely when local node is alive
+### *USING RELEASES*
+
+#### Commmand shell
+
+```
+cd hangman_text_client
+"_build/nonode/rel/hangman_text_client/bin/hangman_text_client" start_iex
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+#### PowerShell
+
+```
+cd hangman_text_client
+_build/nonode/rel/hangman_text_client/bin/hangman_text_client start_iex
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+## REMOTELY WHEN LOCAL NODE IS ALIVE
 
 App `:hangman_engine` must run on node `:hangman_engine@<hostname>` where
 `<hostname>` is either the full host name if long names are used, or the first
 part of the full host name if short names are used.
 
-### Short names
+### *SHORT NAMES WITHOUT USING RELEASES*
 
 Start the engine using a short name:
 
@@ -55,13 +77,25 @@ iex --sname hangman_engine -S mix
 
 Start a game from a different node with a short name:
 
+#### Commmand shell
+
 ```
 cd hangman_text_client
 set "MIX_ENV=dev" && iex --sname mike -S mix
+:observer.start() # optional
 Hangman.Text.Client.start()
 ```
 
-### Long names
+#### PowerShell
+
+```
+cd hangman_text_client
+$Env:MIX_ENV = "dev"; iex --sname mike -S mix
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+### *LONG NAMES WITHOUT USING RELEASES*
 
 Start the engine using a long name:
 
@@ -73,13 +107,25 @@ iex --name hangman_engine@rays.supratech.ca -S mix
 
 Start a game from a different node with a long name:
 
+#### Commmand shell
+
 ```
 cd hangman_text_client
 set "MIX_ENV=prod" && iex --name mike@rays.supratech.ca -S mix
+:observer.start() # optional
 Hangman.Text.Client.start()
 ```
 
-### Short names using releases
+#### PowerShell
+
+```
+cd hangman_text_client
+$Env:MIX_ENV = "prod"; iex --name mike@rays.supratech.ca -S mix
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+### *SHORT NAMES USING RELEASES*
 
 Start the engine using a short name:
 
@@ -91,6 +137,8 @@ iex --sname hangman_engine --cookie fortune -S mix
 
 Start a game from a different node with a short name:
 
+#### Command shell
+
 ```
 cd hangman_text_client
 set RELEASE_NODE=mike@rays
@@ -98,7 +146,17 @@ set RELEASE_NODE=mike@rays
 Hangman.Text.Client.start()
 ```
 
-### Long names using releases
+#### PowerShell
+
+```
+cd hangman_text_client
+$Env:RELEASE_NODE = "mike@rays"
+_build/dev/rel/hangman_text_client/bin/hangman_text_client start_iex
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+### *LONG NAMES USING RELEASES*
 
 Start the engine using a long name:
 
@@ -110,9 +168,22 @@ iex --name hangman_engine@rays.supratech.ca --cookie fortune -S mix
 
 Start a game from a different node with a long name:
 
+#### Commmand shell
+
 ```
 cd hangman_text_client
 set RELEASE_NODE=mike@rays.supratech.ca
 "_build/prod/rel/hangman_text_client/bin/hangman_text_client" start_iex
+:observer.start() # optional
+Hangman.Text.Client.start()
+```
+
+#### PowerShell
+
+```
+cd hangman_text_client
+$Env:RELEASE_NODE = "mike@rays.supratech.ca"
+_build/prod/rel/hangman_text_client/bin/hangman_text_client start_iex
+:observer.start() # optional
 Hangman.Text.Client.start()
 ```
