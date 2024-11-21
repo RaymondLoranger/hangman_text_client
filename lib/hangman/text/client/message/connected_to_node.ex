@@ -1,16 +1,18 @@
 defmodule Hangman.Text.Client.Message.ConnectedToNode do
   alias IO.ANSI.Plus, as: ANSI
 
-  @spec message(node) :: ANSI.ansilist()
-  def message(node) do
+  @spec message(node, node) :: ANSI.ansilist()
+  def message(local_node, engine_node) do
     [
       :light_yellow,
-      "Connected to node ",
+      "Local node ",
       :light_white,
-      :italic,
-      "#{inspect(node)}",
+      "#{inspect(local_node)}",
       :light_yellow,
-      :not_italic,
+      " connected to engine node ",
+      :light_white,
+      "#{inspect(engine_node)}",
+      :light_yellow,
       "..."
     ]
   end

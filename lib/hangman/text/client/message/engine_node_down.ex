@@ -7,10 +7,8 @@ defmodule Hangman.Text.Client.Message.EngineNodeDown do
       :light_yellow,
       "Hangman Engine node ",
       :light_white,
-      :italic,
       "#{inspect(node)}",
       :light_yellow,
-      :not_italic,
       " is down."
     ]
   end

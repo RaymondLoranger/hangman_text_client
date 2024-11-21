@@ -1,16 +1,16 @@
-defmodule Hangman.Text.Client.Message.GameAlreadyStarted do
+defmodule Hangman.Text.Client.Message.GameStarted do
   alias IO.ANSI.Plus, as: ANSI
   alias Hangman.Game
 
-  @spec message(Game.name(), node) :: ANSI.ansilist()
-  def message(name, node) do
+  @spec message(Game.name(), node, pid) :: ANSI.ansilist()
+  def message(name, node, pid) do
     [
       :light_yellow,
       "Hangman Game ",
       :light_white,
-      "#{name}",
+      "#{name} (#{inspect(pid)})",
       :light_yellow,
-      " already started on engine node ",
+      " started on engine node ",
       :light_white,
       "#{inspect(node)}",
       :light_yellow,

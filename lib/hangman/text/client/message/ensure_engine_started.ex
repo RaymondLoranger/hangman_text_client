@@ -7,10 +7,8 @@ defmodule Hangman.Text.Client.Message.EnsureEngineStarted do
       :light_yellow,
       "Ensure Hangman Engine is started on node ",
       :light_white,
-      :italic,
       "#{inspect(node)}",
       :light_yellow,
-      :not_italic,
       "."
     ]
   end

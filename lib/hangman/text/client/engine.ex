@@ -18,7 +18,8 @@ defmodule Hangman.Text.Client.Engine do
     EngineNodeDown,
     EngineNotStarted,
     EnsureEngineStarted,
-    GameAlreadyStarted
+    GameAlreadyStarted,
+    GameStarted
   }
 
   @doc """
@@ -30,19 +31,20 @@ defmodule Hangman.Text.Client.Engine do
   ## Private functions
 
   @spec new_game(node, Game.name()) :: Game.name() | no_return
-  defp new_game(_local_node = :nonode@nohost, game_name) do
+  defp new_game(local_node = :nonode@nohost, game_name) do
     {:ok, _apps} = Application.ensure_all_started(:hangman_engine)
-    {:ok, _pid} = Engine.new_game(game_name)
+    {:ok, pid} = Engine.new_game(game_name)
+    GameStarted.message(game_name, local_node, pid) |> ANSI.puts()
     game_name
   end
 
-  defp new_game(_local_node, game_name) do
+  defp new_game(local_node, game_name) do
     engine_node = Client.engine_node()
 
     if Node.connect(engine_node) do
-      ConnectedToNode.message(engine_node) |> ANSI.puts()
+      ConnectedToNode.message(local_node, engine_node) |> ANSI.puts()
     else
-      CannotConnectToNode.message(engine_node) |> ANSI.puts()
+      CannotConnectToNode.message(local_node, engine_node) |> ANSI.puts()
       self() |> Process.exit(:normal)
     end
 
@@ -51,7 +53,8 @@ defmodule Hangman.Text.Client.Engine do
 
     # Remote procedure call to call a function on a remote node.
     case :rpc.call(engine_node, Engine, :new_game, [game_name]) do
-      {:ok, _pid} ->
+      {:ok, pid} ->
+        GameStarted.message(game_name, engine_node, pid) |> ANSI.puts()
         game_name
 
       # E.g. `Hangman.Text.Client.start("scaffold")` on 2 client nodes.
