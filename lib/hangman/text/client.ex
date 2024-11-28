@@ -137,6 +137,7 @@ defmodule Hangman.Text.Client do
   cd hangman_text_client
   set RELEASE_NODE=mike@rays
   "_build/dev/rel/hangman_text_client/bin/hangman_text_client" start_iex
+  :observer.start() # optional
   Hangman.Text.Client.start()
   ```
 
