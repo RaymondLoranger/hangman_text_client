@@ -59,7 +59,7 @@ defmodule Hangman.Text.Client.Player do
 
   @spec continue(State.t(), ANSI.ansilist()) :: no_return
   defp continue(state, message \\ []) do
-    unless Enum.empty?(message), do: ANSI.puts(message)
+    if !Enum.empty?(message), do: ANSI.puts(message)
 
     state
     |> Summary.display()
