@@ -1,10 +1,10 @@
 To create the nonode, dev and prod releases:
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+=================================================
 
 mix release.init
 
 1. nonode release:
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+====================
 edit rel/env.bat.eex to look like this:
 
   @echo off
@@ -18,7 +18,7 @@ will generate, among others:
 _build/nonode/rel/hangman_text_client/bin/hangman_text_client
 
 2. dev release:
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+=================
 edit rel/env.bat.eex to look like this:
 
   @echo off
@@ -33,7 +33,7 @@ will generate, among others:
 _build/dev/rel/hangman_text_client/bin/hangman_text_client
 
 3. prod release:
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+=================
 edit rel/env.bat.eex to look like this:
 
   @echo off
