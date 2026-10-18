@@ -33,7 +33,7 @@ defmodule Hangman.Text.Client.Summary do
     message(state, :light_white, :light_cyan)
   end
 
-  @spec message(State.t(), atom, atom) :: ANSI.ansilist()
+  @spec message(State.t(), ANSI.ansicode(), ANSI.ansicode()) :: ANSI.ansilist()
   defp message(%State{tally: tally}, label_color, value_color) do
     [
       :reset,
