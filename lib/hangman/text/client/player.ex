@@ -46,7 +46,7 @@ defmodule Hangman.Text.Client.Player do
 
     ["\nWord was: ", word] |> ANSI.puts()
     Engine.end_game(game_name)
-    self() |> Process.exit(:normal)
+    System.stop(0)
   end
 
   def end_game(%State{game_name: game_name} = state, message) do

@@ -2,8 +2,8 @@ import Config
 
 # When local node is alive, app `:hangman_engine` must run on node
 # `:hangman_engine@<hostname>` where `<hostname>` is either the full host name
-# if long names are used, or the first part of the full host name if short names
-# are used.
+# (e.g. rays.supratech.ca) if long names are used, or the first part of the full
+# host name (e.g. rays) if short names are used.
 
 {:ok, host_name} = :inet.gethostname()
 

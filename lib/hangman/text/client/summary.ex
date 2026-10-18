@@ -24,39 +24,30 @@ defmodule Hangman.Text.Client.Summary do
   # Letters used: a d e f g n r t u y
 
   @spec message(State.t()) :: ANSI.ansilist()
-  defp message(%State{tally: %{turns_left: 1} = tally}) do
+  defp message(%State{tally: %{turns_left: 1}} = state) do
     # Message highlighted to signal last guess...
-    [
-      :reset,
-      :light_yellow,
-      "\nWord so far:  ",
-      :fuchsia,
-      "#{Enum.join(tally.letters, @sp)}",
-      :light_yellow,
-      "\nGuesses left: ",
-      :fuchsia,
-      "1",
-      :light_yellow,
-      "\nLetters used: ",
-      :fuchsia,
-      "#{Enum.join(tally.guesses, @sp)}\n"
-    ]
+    message(state, :light_yellow, :fuchsia)
   end
 
-  defp message(%State{tally: tally}) do
+  defp message(state) do
+    message(state, :light_white, :light_cyan)
+  end
+
+  @spec message(State.t(), atom, atom) :: ANSI.ansilist()
+  defp message(%State{tally: tally}, label_color, value_color) do
     [
       :reset,
-      :light_white,
+      label_color,
       "\nWord so far:  ",
-      :light_cyan,
+      value_color,
       "#{Enum.join(tally.letters, @sp)}",
-      :light_white,
+      label_color,
       "\nGuesses left: ",
-      :light_cyan,
+      value_color,
       "#{tally.turns_left}",
-      :light_white,
+      label_color,
       "\nLetters used: ",
-      :light_cyan,
+      value_color,
       "#{Enum.join(tally.guesses, @sp)}\n"
     ]
   end

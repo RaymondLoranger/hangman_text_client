@@ -56,8 +56,9 @@ defmodule Hangman.Text.Client do
   ## REMOTELY WHEN LOCAL NODE IS ALIVE
 
   App `:hangman_engine` must run on node `:hangman_engine@<hostname>` where
-  `<hostname>` is either the full host name if long names are used, or the first
-  part of the full host name if short names are used.
+  `<hostname>` is either the full host name (e.g. rays.supratech.ca) if long
+  names are used, or the first part of the full host name (e.g. rays) if short
+  names are used.
 
   ### *SHORT NAMES WITHOUT USING RELEASES*
 
@@ -195,7 +196,7 @@ defmodule Hangman.Text.Client do
 
       iex> alias Hangman.Text.Client
       iex> engine_node = Client.engine_node()
-      iex> "#{engine_node}" =~ "hangman_engine@"
+      iex> String.starts_with?("#{engine_node}", "hangman_engine@")
       true
   """
   @spec engine_node :: node

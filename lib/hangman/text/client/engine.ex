@@ -45,7 +45,7 @@ defmodule Hangman.Text.Client.Engine do
       ConnectedToNode.message(local_node, engine_node) |> ANSI.puts()
     else
       CannotConnectToNode.message(local_node, engine_node) |> ANSI.puts()
-      self() |> Process.exit(:normal)
+      System.stop(0)
     end
 
     # Synchronizes the global name server with all nodes known to this node.
@@ -60,24 +60,24 @@ defmodule Hangman.Text.Client.Engine do
       # E.g. `Hangman.Text.Client.start("scaffold")` on 2 client nodes.
       {:error, {:already_started, _pid}} ->
         GameAlreadyStarted.message(game_name, engine_node) |> ANSI.puts()
-        self() |> Process.exit(:normal)
+        System.stop(0)
 
       # Extremely unlikely since we've already connected at this point.
       {:badrpc, :nodedown} ->
         EngineNodeDown.message(engine_node) |> ANSI.puts()
-        self() |> Process.exit(:normal)
+        System.stop(0)
 
       # E.g. `iex --sname hangman_engine` without adding option `-S mix`.
       {:badrpc, {:EXIT, {:undef, _}}} ->
         EngineNotStarted.message(engine_node) |> ANSI.puts()
-        self() |> Process.exit(:normal)
+        System.stop(0)
 
       # `:noproc` when client node itself is `:hangman_engine@<hostname>`
       # or on the engine node after app `:hangman_engine` crashed/exited.
       # To fix the issue: Application.ensure_all_started(:hangman_engine)
       {:badrpc, {:EXIT, {:noproc, _}}} ->
         EnsureEngineStarted.message(engine_node) |> ANSI.puts()
-        self() |> Process.exit(:normal)
+        System.stop(0)
 
       error ->
         exit(error)
