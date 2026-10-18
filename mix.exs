@@ -4,7 +4,7 @@ defmodule Hangman.Text.Client.Mixfile do
   def project do
     [
       app: :hangman_text_client,
-      version: "0.1.88",
+      version: "0.1.89",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Text Client",
@@ -32,7 +32,7 @@ defmodule Hangman.Text.Client.Mixfile do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*"],
+      files: ["lib", "mix.exs", "README*", "release notes.txt"],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],
       links: %{"GitHub" => source_url()}
